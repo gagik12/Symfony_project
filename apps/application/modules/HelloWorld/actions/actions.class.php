@@ -17,6 +17,6 @@ class HelloWorldActions extends sfActions
   */
   public function executeIndex(sfWebRequest $request)
   {
-    $this->forward('default', 'module');
+    $this->username = $request->getParameter('username');
   }
 }
