@@ -8,7 +8,7 @@ helloworld:
 # default rules
 homepage:
   url:   /
-  param: { module: HelloWorld, action: index }
+  param: { module: default, action: index }
 
 # generic rules
 # please, remove them by adding more specific rules
