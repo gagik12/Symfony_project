@@ -10,13 +10,14 @@
  */
 class hello_worldActions extends sfActions
 {
- /**
-  * Executes index action
-  *
-  * @param sfRequest $request A request object
-  */
-  public function executeIndex(sfWebRequest $request)
-  {
-    $this->userName = $request->getParameter('username');
-  }
+    /**
+     * Executes index action
+     *
+     * @param sfRequest $request A request object
+     */
+
+    public function executeIndex(sfWebRequest $request)
+    {
+        $this->userName = $request->getParameter('username');
+    }
 }

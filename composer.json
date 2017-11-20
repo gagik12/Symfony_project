@@ -1,5 +1,5 @@
 {
-    "require-dev": {
-        "symfony/symfony1": "1.4"
-    }
+  "require-dev": {
+    "symfony/symfony1": "1.4"
+  }
 }
