@@ -15,8 +15,8 @@ CREATE TABLE `user`
 	`id` INTEGER  NOT NULL AUTO_INCREMENT,
 	`login` VARCHAR(50)  NOT NULL,
 	`password` VARCHAR(100)  NOT NULL,
-	`name` VARCHAR(40)  NOT NULL,
-	`last_name` VARCHAR(50)  NOT NULL,
+	`first_name` VARCHAR(255),
+	`last_name` VARCHAR(255),
 	`role` VARCHAR(10)  NOT NULL,
 	PRIMARY KEY (`id`),
 	UNIQUE KEY `user_U_1` (`login`)

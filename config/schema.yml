@@ -3,6 +3,6 @@ propel:
     id:    ~
     login: { type: varchar(50), required: true, index: unique } 
     password: { type: varchar(100), required: true } 
-    name: { type: varchar(40), required: true } 
-    last_name: { type: varchar(50), required: true } 
+    first_name: { type: varchar(255) }
+    last_name: { type: varchar(255) }
     role: { type: varchar(10), required: true } 
