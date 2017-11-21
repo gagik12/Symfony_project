@@ -1,16 +1,17 @@
 <?php
+
 /* @property form $form
  */
 class sign_inActions extends sfActions
 {
-  public function executeIndex(sfWebRequest $request)
-  {
-      $this->form = new sfForm();
-      $this->form->setWidgets(array(
-          'name'    => new sfWidgetFormInputText(),
-          'email'   => new sfWidgetFormInputText(array('default' => 'me@example.com')),
-          'subject' => new sfWidgetFormChoice(array('choices' => array('Subject A', 'Subject B', 'Subject C'))),
-          'message' => new sfWidgetFormTextarea(),
-      ));
-  }
+    public function executeIndex(sfWebRequest $request)
+    {
+        $this->form = new sfForm();
+        $this->form->setWidgets([
+            'name' => new sfWidgetFormInputText(),
+            'email' => new sfWidgetFormInputText(['default' => 'me@example.com']),
+            'subject' => new sfWidgetFormChoice(['choices' => ['Subject A', 'Subject B', 'Subject C']]),
+            'message' => new sfWidgetFormTextarea(),
+        ]);
+    }
 }

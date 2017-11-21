@@ -2,4 +2,4 @@
 /* @var form $form
  */
 ?>
-<?=$form?>
+<?= $form ?>
