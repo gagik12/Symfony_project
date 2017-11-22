@@ -1,7 +1,6 @@
 <?php
 
-/* @property string $userName
- */
+/** @property string $userName */
 class hello_worldActions extends sfActions
 {
     public function executeIndex(sfWebRequest $request)
