@@ -1,5 +1,2 @@
-<?php
-/* @var form $form
- */
-?>
+<? /** @var form $form */ ?>
 <?= $form ?>

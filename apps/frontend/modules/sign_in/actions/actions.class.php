@@ -1,7 +1,6 @@
 <?php
 
-/* @property form $form
- */
+/* @property form $form */
 class sign_inActions extends sfActions
 {
     public function executeIndex(sfWebRequest $request)
@@ -9,7 +8,7 @@ class sign_inActions extends sfActions
         $this->form = new sfForm();
         $this->form->setWidgets([
             'name' => new sfWidgetFormInputText(),
-            'email' => new sfWidgetFormInputText(['default' => 'me@example.com']),
+            'email' => new sfWidgetFormInputText(['default' => '']),
             'subject' => new sfWidgetFormChoice(['choices' => ['Subject A', 'Subject B', 'Subject C']]),
             'message' => new sfWidgetFormTextarea(),
         ]);
