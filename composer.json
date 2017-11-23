@@ -1,5 +1,12 @@
 {
     "require": {
         "vadimdol/symfony1": "1.0"
+    },
+	
+	"extra": {
+        "heroku": {
+            "document-root": "web",
+            "index-document": "index.php"
+        }
     }
 }
