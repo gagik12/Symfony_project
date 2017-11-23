@@ -1,8 +1,13 @@
 propel:
-  user: 
-    id:    ~
-    login: { type: varchar(50), required: true, index: unique } 
-    password: { type: varchar(100), required: true } 
-    first_name: { type: varchar(255) }
-    last_name: { type: varchar(255) }
-    role: { type: varchar(10), required: true } 
+  _attributes:
+    package: lib.model
+    defaultIdMethod: native
+  user:
+    _attributes: { phpName: User }
+    id: { phpName: Id, type: INTEGER, size: '11', primaryKey: true, autoIncrement: true, required: true }
+    login: { phpName: Login, type: VARCHAR, size: '50', required: true }
+    password: { phpName: Password, type: VARCHAR, size: '100', required: true }
+    first_name: { phpName: FirstName, type: VARCHAR, size: '255', required: false }
+    last_name: { phpName: LastName, type: VARCHAR, size: '255', required: false }
+    role: { phpName: Role, type: VARCHAR, size: '10', required: true }
+    _uniques: { user_U_1: [login] }

@@ -3,9 +3,9 @@
 /**
  * Project form base class.
  *
- * @package    ##PROJECT_NAME##
+ * @package    Symfony_project
  * @subpackage form
- * @author     ##AUTHOR_NAME##
+ * @author     Your name here
  * @version    SVN: $Id: sfPropelFormBaseTemplate.php 9304 2008-05-27 03:49:32Z dwhittle $
  */
 abstract class BaseFormPropel extends sfFormPropel
