@@ -1,8 +1,19 @@
 <?php
 
-include(dirname(__FILE__) . '/../../bootstrap/functional.php');
+include(dirname(__FILE__).'/../../bootstrap/functional.php');
 
 $browser = new sfTestFunctional(new sfBrowser());
 
-$browser->get('/hello_world/index')->with('request')->begin()->isParameter('module', 'hello_world')->isParameter('action', 'index')->end()->with('response')->begin()
-        ->isStatusCode(200)->checkElement('body', '!/This is a temporary page/')->end();
+$browser->
+  get('/hello_world/index')->
+
+  with('request')->begin()->
+    isParameter('module', 'hello_world')->
+    isParameter('action', 'index')->
+  end()->
+
+  with('response')->begin()->
+    isStatusCode(200)->
+    checkElement('body', '!/This is a temporary page/')->
+  end()
+;
