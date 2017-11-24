@@ -3,8 +3,12 @@
 	"php" : "5.6.31",
         "vadimdol/symfony1": "1.0"
     },
+
+    "require-dev": {
+        "heroku/heroku-buildpack-php": "*"
+    },
 	
-	"extra": {
+    "extra": {
         "heroku": {
             "document-root": "web",
             "index-document": "index.php"
