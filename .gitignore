@@ -6,7 +6,6 @@
 /lib/model/**/om/
 
 /cache
-/date
 /vendor
 /log
 /plugins
