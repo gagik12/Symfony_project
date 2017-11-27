@@ -12,9 +12,11 @@ all:
     class: sfPropelDatabase
     param:
       classname: PropelPDO
-      dsn: 'mysql:host=localhost;dbname=project'
-      username: vadim
-      password: 123vadim
+      dsn: 'mysql:host=us-cdbr-iron-east-05.cleardb.net;dbname=heroku_a652b928c06e2ac'
+      username: b02113edca8db0
+      password: 0eb79b64
       encoding: utf8
       persistent: true
       pooling: true
+# local mysql mysql:host=localhost;dbname=project;vadim;123vadim
+# heroku CLEARDB_DATABASE_URL: mysql://b02113edca8db0:0eb79b64@us-cdbr-iron-east-05.cleardb.net/heroku_a652b928c06e2ac?
