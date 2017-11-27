@@ -5,6 +5,10 @@ class hello_worldActions extends sfActions
 {
     public function executeIndex(sfWebRequest $request)
     {
-        $this->userName = $request->getParameter('username');
+        if (!$this->getUser()->isAuthenticated())
+        {
+            $this->redirect('user/signin');
+        }
+        $this->userName = $this->getUser()->getAttribute('userName');
     }
 }

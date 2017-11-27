@@ -9,6 +9,13 @@
     <?php include_javascripts() ?>
   </head>
   <body>
+      <div class="menu">
+        <ul>
+            <li><a href="<?= url_for('hello_world/index') ?>">Hello World</a></li>
+            <li><a href="<?= url_for('user/user_list') ?>">User List</a></li>
+            <li><a href="<?= url_for('user/signin') ?>">Sign In</a></li>
+        </ul>
+      </div>
     <?php echo $sf_content ?>
   </body>
 </html>

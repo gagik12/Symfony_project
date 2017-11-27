@@ -1,0 +1,110 @@
+@font-face {
+    font-family: Hel-Light;
+    src: url(../font/helveticaneuecyr-light.otf);
+}
+
+body {
+    margin: 0;
+    font-family: Hel-Light;
+    background-color: #42A5F5;
+}
+
+form {
+    padding-top: 100px;
+    width: 295px;
+    margin: 0 auto;
+}
+
+input {
+    margin-top: 20px;
+}
+
+h1, h2 {
+    color: white;
+    margin-top: 100px;
+    text-align: center;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+form input[type="text"], form input[type="password"], form input[type="email"] {
+    border: solid 1px #C0C0C0;
+    width: 295px;
+    padding: 7px;
+    font-size: 13pt;
+    border-radius: 3px;
+}
+
+input[type="submit"]:hover, input[type="button"]:hover {
+    background: rgb(82,93,145);
+}
+
+input[type="submit"], input[type="button"] {
+    cursor: pointer;
+    width: 312px;
+    border: none;
+    font-weight: 700;
+    color: white;
+    text-decoration: none;
+    padding: .8em 1em calc(.8em + 3px);
+    border-radius: 3px;
+    background: rgb(102,114,179);
+    box-shadow: 0 -3px rgb(82,93,145) inset;
+    transition: 0.2s;
+}
+
+.error_list {
+    text-align: center;
+    list-style-type: none;
+}
+
+.error_list li {
+    color: white;
+    font-weight: 600;
+    font-size: 20px;
+}
+
+table {
+    margin: 0 auto;
+}
+
+.boxer {
+    display: table;
+    border-collapse: collapse;
+    margin: 0 auto;
+    width: 450px;
+}
+
+.boxer .box-row {
+    display: table-row;
+}
+
+.boxer .box {
+    display: table-cell;
+    text-align: left;
+    vertical-align: top;
+}
+
+.column_name {
+    color: white;
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.menu {
+    text-align: center;
+    background: #64B5F6;
+    color: #fff;
+    padding: 1em;
+}
+
+.menu li {
+    display: inline;
+    list-style: none;
+    padding: 5px;
+    border: solid 1px #000000;
+    font-weight: 600;
+}
