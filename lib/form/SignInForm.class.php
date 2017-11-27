@@ -13,7 +13,7 @@ class SignInForm extends sfForm
             'password' => new sfValidatorString(['required' => TRUE], ['required' => 'Пароль: обязательный параметр!']),
         ]);
         $this->validatorSchema->setPostValidator(new sfValidatorCallback(['callback' => [$this, 'checkUser']]));
-        $this->getWidgetSchema()->setNameFormat('signin[%s]');
+        $this->getWidgetSchema()->setNameFormat('signIn[%s]');
     }
 
     public function checkUser($validator, $values)

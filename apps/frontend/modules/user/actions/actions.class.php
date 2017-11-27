@@ -10,7 +10,7 @@ class userActions extends sfActions
     {
     }
 
-    public function executeSignin(sfWebRequest $request)
+    public function executeSignIn(sfWebRequest $request)
     {
         $this->form = new SignInForm();
         if ($request->isMethod('post'))
@@ -23,7 +23,7 @@ class userActions extends sfActions
     {
         if (!$this->getUser()->isAuthenticated() || ($this->getUser()->getAttribute('role') != "admin"))
         {
-            $this->redirect('user/signin');
+            $this->redirect('user/signIn');
         }
         $this->users = UserPeer::doSelect(new Criteria());
     }
