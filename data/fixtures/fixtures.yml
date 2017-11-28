@@ -1,13 +1,25 @@
 user:
    vadim:
      login: vadim
-     password: changeme
+     password: 171c6d4e0685a32a28b0db65e423ec3f
      first_name: Vadim
      last_name: Dolganov
      role: admin
    Vasya:
      login: vasya
-     password: changeme
+     password: 171c6d4e0685a32a28b0db65e423ec3f
      first_name: Vasya
      last_name: Пупкин
+     role: user
+   Job:
+     login: job
+     password: 171c6d4e0685a32a28b0db65e423ec3f
+     first_name: Job
+     last_name: Jobs
+     role: user
+   Jon:
+     login: jon
+     password: 171c6d4e0685a32a28b0db65e423ec3f
+     first_name: Jon
+     last_name: Pop
      role: user
