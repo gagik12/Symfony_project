@@ -9,8 +9,8 @@ class SignInForm extends sfForm
             'password' => new sfWidgetFormInputPassword([], ['placeholder' => 'Пароль']),
         ]);
         $this->setValidators([
-            'login' => new sfValidatorString(['required' => TRUE], ['required' => 'Логин: обязательный параметр!']),
-            'password' => new sfValidatorString(['required' => TRUE], ['required' => 'Пароль: обязательный параметр!']),
+            'login' => new sfValidatorString(['required' => true], ['required' => 'Логин: обязательный параметр!']),
+            'password' => new sfValidatorString(['required' => true], ['required' => 'Пароль: обязательный параметр!']),
         ]);
         $this->validatorSchema->setPostValidator(new sfValidatorCallback(['callback' => [$this, 'checkUser']]));
         $this->getWidgetSchema()->setNameFormat('signIn[%s]');
@@ -24,13 +24,18 @@ class SignInForm extends sfForm
             $user = UserPeer::doSelectOne($criteria, Propel::getConnection());
             if ($user)
             {
+                $userInstance = sfContext::getInstance()->getUser();
+                if ($userInstance->isAuthenticated())
+                {
+                    $userInstance->setAuthenticated(false);
+                    $userInstance->clearCredentials();
+                }
+                $userInstance->setAuthenticated(true);
 
-                sfContext::getInstance()->getUser()->setAuthenticated(true);
+                $userInstance->setAttribute('role', $user->getRole());
+                $userInstance->setAttribute('userName', $user->getFirstName());
 
-                sfContext::getInstance()->getUser()->setAttribute('role', $user->getRole());
-                sfContext::getInstance()->getUser()->setAttribute('userName', $user->getFirstName());
-
-                sfContext::getInstance()->getUser()->addCredential($user->getRole());
+                $userInstance->addCredential($user->getRole());
             }
             else
             {

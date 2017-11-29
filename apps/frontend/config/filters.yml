@@ -1,7 +1,12 @@
 rendering: ~
 security:  ~
 
-# insert your own filters here
+security:
+  class: PageAccessFilter
+  param:
+    pages:
+      - { module: user, action: userList, login: { module: user, action: signIn }, secure: { module: hello_world, action: index } }
+      - { module: hello_world, action: index, login: { module: user, action: signIn }}
 
 cache:     ~
 execution: ~

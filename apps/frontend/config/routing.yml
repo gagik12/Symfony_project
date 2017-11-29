@@ -10,6 +10,10 @@ sign_in:
     url:   /user/sign_in
     param: { module: user, action: signIn }
 
+log_out:
+    url:   /user/log_out
+    param: { module: user, action: logOut }
+
 homepage:
   url:   /
   param: { module: default, action: index }

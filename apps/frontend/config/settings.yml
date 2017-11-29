@@ -30,9 +30,3 @@ all:
 
     # Enable the database manager
     use_database:           true
-  .action:
-    login_module: user
-    login_action: signIn
-
-    secure_module: user
-    secure_action: signIn

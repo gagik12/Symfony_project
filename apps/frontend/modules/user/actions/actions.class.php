@@ -24,6 +24,16 @@ class userActions extends sfActions
         $this->users = UserPeer::doSelect(new Criteria());
     }
 
+    public function executeLogOut(sfWebRequest $request)
+    {
+        if($this->getUser()->isAuthenticated())
+        {
+            $this->getUser()->setAuthenticated(false);
+            $this->getUser()->clearCredentials();
+        }
+        $this->redirect('user/signIn');
+    }
+
     protected function processForm(sfWebRequest $request, sfForm $form)
     {
         $form->bind($request->getParameter($form->getName()));
