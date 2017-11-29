@@ -1,0 +1,13 @@
+RewriteEngine On
+
+DirectoryIndex index.php/user 
+
+RewriteRule ^\.htaccess$ - [F]
+
+RewriteCond %{REQUEST_URI} =""
+RewriteRule ^.*$ /web/index.php [NC,L]
+
+RewriteCond %{REQUEST_URI} !^/web/.*$
+RewriteRule ^(.*)$ /web/$1
+
+RewriteRule ^public/.*$ /web/index.php [NC,L]
