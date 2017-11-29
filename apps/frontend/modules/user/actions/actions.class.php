@@ -21,10 +21,6 @@ class userActions extends sfActions
 
     public function executeUserList(sfWebRequest $request)
     {
-        if (!$this->getUser()->isAuthenticated() || ($this->getUser()->getAttribute('role') != "admin"))
-        {
-            $this->redirect('user/signIn');
-        }
         $this->users = UserPeer::doSelect(new Criteria());
     }
 

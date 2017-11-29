@@ -24,6 +24,7 @@ class SignInForm extends sfForm
             $user = UserPeer::doSelectOne($criteria, Propel::getConnection());
             if ($user)
             {
+
                 sfContext::getInstance()->getUser()->setAuthenticated(true);
 
                 sfContext::getInstance()->getUser()->setAttribute('role', $user->getRole());
