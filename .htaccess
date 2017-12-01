@@ -1,13 +1,22 @@
 RewriteEngine On
 
-DirectoryIndex index.php/user 
+  # uncomment the following line, if you are having trouble
+  # getting no_script_name to work
+  #RewriteBase /
 
-RewriteRule ^\.htaccess$ - [F]
+  # we skip all files with .something
+  #RewriteCond %{REQUEST_URI} \..+$
+  #RewriteCond %{REQUEST_URI} !\.html$
+  #RewriteRule .* - [L]
 
-RewriteCond %{REQUEST_URI} =""
-RewriteRule ^.*$ /web/index.php [NC,L]
+  # we check if the .html version is here (caching)
+RewriteRule ^$ index.html [QSA]
+RewriteRule ^([^.]+)$ $1.html [QSA]
+RewriteCond %{REQUEST_FILENAME} !-f
+ 
+RewriteRule ^(.*)$  web/$1 [QSA]
+RewriteCond %{REQUEST_FILENAME} !-f
 
-RewriteCond %{REQUEST_URI} !^/web/.*$
-RewriteRule ^(.*)$ /web/$1
-
-RewriteRule ^public/.*$ /web/index.php [NC,L]
+  
+  # no, so we redirect to our front web controller
+RewriteRule ^(.*)$ index.php [QSA,L]

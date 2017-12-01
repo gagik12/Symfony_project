@@ -13,7 +13,6 @@
         <ul>
             <li><a href="<?= url_for('hello_world/index') ?>">Hello World</a></li>
             <li><a href="<?= url_for('user/user_list') ?>">User List</a></li>
-            <li><a href="<?= url_for('user/sign_in') ?>">Sign In</a></li>
             <li><a href="<?= url_for('user/logOut') ?>">Log Out</a></li>
         </ul>
       </div>
