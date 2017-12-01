@@ -14,7 +14,7 @@ class userActions extends sfActions
     public function executeSignIn(sfWebRequest $request)
     {
         $this->form = new SignInForm();
-        if ($request->isMethod('post'))
+        if ($request->isMethod(sfRequest::POST))
         {
             $this->processForm($request, $this->form);
         }
@@ -37,7 +37,8 @@ class userActions extends sfActions
         $form->bind($request->getParameter($form->getName()));
         if ($form->isValid())
         {
-            $url = ($this->getUser()->getAttribute('role') == "admin") ? 'user/userList' : 'hello_world/index';
+            $userRole = $this->getUser()->getUserFromDatabase()->getRole();
+            $url = ($userRole == UserRole::ADMIN) ? 'user/userList' : 'hello_world/index';
             $this->redirect($url);
         }
     }

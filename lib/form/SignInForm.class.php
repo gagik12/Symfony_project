@@ -21,21 +21,10 @@ class SignInForm extends sfForm
         if ($values['login'] && $values['password'])
         {
             $criteria = $this->getSignInCriteria($values);
-            $user = UserPeer::doSelectOne($criteria, Propel::getConnection());
-            if ($user)
+            $userFromDatabase = UserPeer::doSelectOne($criteria, Propel::getConnection());
+            if ($userFromDatabase)
             {
-                $userInstance = sfContext::getInstance()->getUser();
-                if ($userInstance->isAuthenticated())
-                {
-                    $userInstance->setAuthenticated(false);
-                    $userInstance->clearCredentials();
-                }
-                $userInstance->setAuthenticated(true);
-
-                $userInstance->setAttribute('role', $user->getRole());
-                $userInstance->setAttribute('userName', $user->getFirstName());
-
-                $userInstance->addCredential($user->getRole());
+                sfContext::getInstance()->getUser()->signIn($userFromDatabase);
             }
             else
             {
