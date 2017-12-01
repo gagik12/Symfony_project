@@ -1,5 +1,5 @@
 hello_world:
-  url:   /hello_world/:username
+  url:   /hello_world
   param: { module: hello_world, action: index }
 
 user_list:

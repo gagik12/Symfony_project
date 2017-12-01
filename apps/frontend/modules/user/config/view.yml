@@ -1,2 +1,9 @@
 signInSuccess:
+  metas:
+    title: Вход
+
   layout: signIn_layout
+
+userListSuccess:
+  metas:
+    title: Список пользователей

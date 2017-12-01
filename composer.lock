@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "0e9fbd7a605dcd89981d89031fb325f3",
+    "content-hash": "78b1d351779f4da4617c5ca27ffc50c0",
     "packages": [
         {
             "name": "vadimdol/symfony1",
@@ -42,7 +42,7 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": "^5.6"
+        "php": "^7.1"
     },
     "platform-dev": []
 }

@@ -2,10 +2,12 @@
 
 class myUser extends sfBasicSecurityUser
 {
+    private const LOGGED_USER = 'loggedUser';
+
     public function signIn($userFromDatabase)
     {
         $this->setAuthenticated(true);
-        $this->setAttribute('userFromDatabase', $userFromDatabase);
+        $this->setAttribute(myUser::LOGGED_USER, $userFromDatabase);
         $this->addCredential($userFromDatabase->getRole());
     }
 
@@ -18,8 +20,8 @@ class myUser extends sfBasicSecurityUser
         }
     }
 
-    public function getUserFromDatabase()
+    public function getLoggedUser()
     {
-        return ($this->hasAttribute('userFromDatabase')) ? $this->getAttribute('userFromDatabase') : null;
+        return ($this->hasAttribute(myUser::LOGGED_USER)) ? $this->getAttribute(myUser::LOGGED_USER) : null;
     }
 }

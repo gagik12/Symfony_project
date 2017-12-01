@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
     <head>
-        <?php include_http_metas() ?>
-        <?php include_metas() ?>
-        <?php include_title() ?>
-        <?php include_stylesheets() ?>
-        <?php include_javascripts() ?>
+        <?
+        include_http_metas();
+        include_metas();
+        include_title();
+        include_stylesheets();
+        include_javascripts();
+        ?>
         <link rel="shortcut icon" href="/favicon.ico" />
     </head>
     <body>

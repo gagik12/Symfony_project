@@ -28,7 +28,7 @@ class userActions extends sfActions
     public function executeLogOut(sfWebRequest $request)
     {
         $this->getUser()->logOut();
-        $this->redirect('user/signIn');
+        $this->redirect('@sign_in');
         return sfView::NONE;
     }
 
@@ -37,8 +37,8 @@ class userActions extends sfActions
         $form->bind($request->getParameter($form->getName()));
         if ($form->isValid())
         {
-            $userRole = $this->getUser()->getUserFromDatabase()->getRole();
-            $url = ($userRole == UserRole::ADMIN) ? 'user/userList' : 'hello_world/index';
+            $userRole = $this->getUser()->getLoggedUser()->getRole();
+            $url = ($userRole == UserRole::ADMIN) ? '@user_list' : '@hello_world';
             $this->redirect($url);
         }
     }
