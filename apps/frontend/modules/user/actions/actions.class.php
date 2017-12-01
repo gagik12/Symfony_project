@@ -8,6 +8,7 @@ class userActions extends sfActions
 {
     public function executeIndex(sfWebRequest $request)
     {
+        return sfView::NONE;
     }
 
     public function executeSignIn(sfWebRequest $request)
@@ -26,12 +27,9 @@ class userActions extends sfActions
 
     public function executeLogOut(sfWebRequest $request)
     {
-        if($this->getUser()->isAuthenticated())
-        {
-            $this->getUser()->setAuthenticated(false);
-            $this->getUser()->clearCredentials();
-        }
+        $this->getUser()->logOut();
         $this->redirect('user/signIn');
+        return sfView::NONE;
     }
 
     protected function processForm(sfWebRequest $request, sfForm $form)
