@@ -16,7 +16,7 @@ log_out:
 
 homepage:
   url:   /
-  param: { module: user, action: signIn }
+  param: { module: user, action: login }
 
 default_index:
   url:   /:module
