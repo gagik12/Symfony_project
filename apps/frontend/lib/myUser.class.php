@@ -24,4 +24,9 @@ class myUser extends sfBasicSecurityUser
     {
         return ($this->hasAttribute(myUser::LOGGED_USER)) ? $this->getAttribute(myUser::LOGGED_USER) : null;
     }
+
+    public function isUserAdmin()
+    {
+        return $this->hasCredential(UserRole::ADMIN);
+    }
 }

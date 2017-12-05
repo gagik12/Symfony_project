@@ -36,8 +36,8 @@ all:
     login_module: user
     login_action: signIn
 
-    secure_module: hello_world
-    secure_action: index
+    secure_module: default
+    secure_action: secure
 
-    error_404_module: errors
+    error_404_module: default
     error_404_action: error404

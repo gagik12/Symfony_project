@@ -2,8 +2,6 @@ signInSuccess:
   metas:
     title: Вход
 
-  layout: layout
-
 userListSuccess:
   metas:
     title: Список пользователей
