@@ -6,13 +6,12 @@
  */
 class userActions extends sfActions
 {
-    public function executeIndex(sfWebRequest $request)
-    {
-        return sfView::NONE;
-    }
-
     public function executeSignIn(sfWebRequest $request)
     {
+        if ($this->getUser()->isAuthenticated())
+        {
+            $this->redirect('@hello_world');
+        }
         $this->form = new SignInForm();
         if ($request->isMethod(sfRequest::POST))
         {

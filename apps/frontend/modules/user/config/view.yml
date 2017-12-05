@@ -2,7 +2,7 @@ signInSuccess:
   metas:
     title: Вход
 
-  layout: signIn_layout
+  layout: layout
 
 userListSuccess:
   metas:

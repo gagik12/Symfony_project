@@ -21,6 +21,7 @@ test:
 
 all:
   .settings:
+    standard_helpers: [I18N, Partial, Date]
     # Form security secret (CSRF protection)
     # csrf_secret:            7a5fd2d94ef29cfe9ebb48295a87bd4b6d15dc8b
 
@@ -30,3 +31,13 @@ all:
 
     # Enable the database manager
     use_database:           true
+
+  .actions:
+    login_module: user
+    login_action: signIn
+
+    secure_module: hello_world
+    secure_action: index
+
+    error_404_module: errors
+    error_404_action: error404

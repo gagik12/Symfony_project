@@ -14,4 +14,4 @@ default:
   javascripts:    []
 
   has_layout:     true
-  layout:         layout
+  layout:         header_layout

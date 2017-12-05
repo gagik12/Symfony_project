@@ -1,3 +1,6 @@
 userList:
   is_secure: true
   credentials: [admin]
+
+signIn:
+  is_secure: false
