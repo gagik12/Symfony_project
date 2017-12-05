@@ -6,7 +6,7 @@
  */
 class userActions extends sfActions
 {
-    public function executeSignIn(sfWebRequest $request)
+    public function executeLogin(sfWebRequest $request)
     {
         if ($this->getUser()->isAuthenticated())
         {
@@ -27,7 +27,7 @@ class userActions extends sfActions
     public function executeLogOut(sfWebRequest $request)
     {
         $this->getUser()->logOut();
-        $this->redirect('@sign_in');
+        $this->redirect('@login');
         return sfView::NONE;
     }
 

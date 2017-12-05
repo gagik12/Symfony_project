@@ -2,5 +2,5 @@ userList:
   is_secure: true
   credentials: [admin]
 
-signIn:
+login:
   is_secure: false
