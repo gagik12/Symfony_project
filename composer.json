@@ -1,7 +1,7 @@
 {
     "require": {
 	"php" : "^7.1",
-        "vadimdol/symfony1": "1.0"
+        "vadimdol/symfony1": "1.1"
     },
 
     "extra": {
