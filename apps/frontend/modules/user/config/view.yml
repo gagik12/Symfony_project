@@ -1,6 +1,7 @@
 loginSuccess:
   metas:
     title: Вход
+  layout: layout_without_header
 
 userListSuccess:
   metas:

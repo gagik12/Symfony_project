@@ -1,5 +1,4 @@
 <? /** @var array $users */ ?>
-<? include_partial('global/header') ?>
 <h1>Users</h1>
 
 <div class="boxer">

@@ -1,5 +1,9 @@
-<? /** @var string $userName */ ?>
-<? include_partial('global/header') ?>
+<?
+/**
+ * @var string $userFirstName
+ * @var string $userLastName
+ */
+?>
 <h1>User Profile</h1>
 <div class="user_info">
     <h2>First name: <?= $userFirstName ?></h2>

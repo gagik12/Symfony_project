@@ -1,3 +1,4 @@
-indexSuccess:
+error404Success:
   metas:
     title: Page Not Found
+  layout: layout_without_header

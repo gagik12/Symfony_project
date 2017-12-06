@@ -11,7 +11,6 @@
         <link rel="shortcut icon" href="/favicon.ico" />
     </head>
     <body>
-        <? include_partial('global/header') ?>
         <div class="main">
             <?php echo $sf_content ?>
         </div>
