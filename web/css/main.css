@@ -19,10 +19,15 @@ input {
     margin-top: 20px;
 }
 
-h1, h2 {
+h1 {
     color: white;
     margin-top: 100px;
     text-align: center;
+}
+
+h2 {
+    color: white;
+    margin-top: 0;
 }
 
 a {
@@ -94,14 +99,19 @@ table {
     font-size: 20px;
 }
 
-.menu {
+.header {
     text-align: center;
     background: #64B5F6;
     color: #fff;
     padding: 1em;
 }
 
-.menu li {
+.user_info {
+    margin: 50px auto;
+    display: table;
+}
+
+.header li {
     display: inline;
     list-style: none;
     padding: 5px;

@@ -1,6 +1,6 @@
-hello_world:
-  url:   /hello_world
-  param: { module: hello_world, action: index }
+user_profile:
+    url:   /user/user_profile
+    param: { module: user, action: userProfile }
 
 user_list:
     url:   /user/user_list

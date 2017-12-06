@@ -10,7 +10,7 @@ class userActions extends sfActions
     {
         if ($this->getUser()->isAuthenticated())
         {
-            $this->redirect('@hello_world');
+            $this->redirect('@user_profile');
         }
         $this->form = new SignInForm();
         if ($request->isMethod(sfRequest::POST))
@@ -22,6 +22,12 @@ class userActions extends sfActions
     public function executeUserList(sfWebRequest $request)
     {
         $this->users = UserPeer::doSelect(new Criteria());
+    }
+
+    public function executeUserProfile(sfWebRequest $request)
+    {
+        $this->userFirstName = $this->getUser()->getLoggedUser()->getFirstName();
+        $this->userLastName = $this->getUser()->getLoggedUser()->getLastName();
     }
 
     public function executeLogOut(sfWebRequest $request)
@@ -37,7 +43,7 @@ class userActions extends sfActions
         if ($form->isValid())
         {
             $userRole = $this->getUser()->getLoggedUser()->getRole();
-            $url = ($userRole == UserRole::ADMIN) ? '@user_list' : '@hello_world';
+            $url = ($userRole == UserRole::ADMIN) ? '@user_list' : '@user_profile';
             $this->redirect($url);
         }
     }

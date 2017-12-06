@@ -11,7 +11,7 @@ class defaultActions extends sfActions
     {
         if(!$this->getUser()->isUserAdmin())
         {
-            $this->redirect('@hello_world');
+            $this->redirect('@user_profile');
         }
     }
 }

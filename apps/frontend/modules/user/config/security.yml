@@ -4,3 +4,7 @@ userList:
 
 login:
   is_secure: false
+
+profile:
+  is_secure: true
+  credentials: [[admin, user]]
