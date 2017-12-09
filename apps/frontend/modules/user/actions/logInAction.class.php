@@ -1,7 +1,7 @@
 <?php
 
-/** @property sfForm $form */
-class loginAction extends sfAction
+/** @property sfForm $logInform */
+class logInAction extends sfAction
 {
     public function execute($request)
     {
@@ -9,10 +9,10 @@ class loginAction extends sfAction
         {
             $this->redirect('@user_profile');
         }
-        $this->form = new SignInForm();
+        $this->logInform = new LogInForm();
         if ($request->isMethod(sfRequest::POST))
         {
-            $this->processForm($request, $this->form);
+            $this->processForm($request, $this->logInform);
         }
     }
 

@@ -6,9 +6,9 @@ user_list:
     url:   /user/user_list
     param: { module: user, action: userList }
 
-login:
-    url:   /user/login
-    param: { module: user, action: login }
+log_in:
+    url:   /user/log_in
+    param: { module: user, action: logIn }
 
 log_out:
     url:   /user/log_out
@@ -16,7 +16,7 @@ log_out:
 
 homepage:
   url:   /
-  param: { module: user, action: login }
+  param: { module: user, action: logIn }
 
 default_index:
   url:   /:module

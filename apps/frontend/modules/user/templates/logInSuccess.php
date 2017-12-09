@@ -1,8 +1,8 @@
 <? /** @var sfForm $form */ ?>
 <form method="post" action="">
     <div>
-        <?= $form['login']->render() ?>
-        <?= $form['password']->render() ?>
+        <?= $logInform['login']->render() ?>
+        <?= $logInform['password']->render() ?>
     </div>
     <div>
         <input type="submit" />
@@ -10,7 +10,7 @@
 </form>
 
 <ul class="error_list">
-    <? $errors = $form->getErrorSchema()->getErrors() ?>
+    <? $errors = $logInform->getErrorSchema()->getErrors() ?>
     <? if (count($errors) > 0) : ?>
         <? foreach ($errors as $name => $error) : ?>
             <li><?= $error ?></li>
