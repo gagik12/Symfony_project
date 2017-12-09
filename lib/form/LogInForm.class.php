@@ -30,7 +30,7 @@ class LogInForm extends sfForm
         if ($values[LogInForm::LOGIN] && $values[LogInForm::PASSWORD])
         {
             $criteria = $this->getLogInCriteria($values);
-            $userFromDatabase = UserPeer::doSelectOne($criteria, Propel::getConnection());
+            $userFromDatabase = UserPeer::doSelectOne($criteria);
             if ($userFromDatabase)
             {
                 sfContext::getInstance()->getUser()->logIn($userFromDatabase);
