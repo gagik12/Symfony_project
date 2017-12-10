@@ -9,6 +9,8 @@ class UserInfoTask extends sfPropelBaseTask
 
     private const LOGIN_ARGUMENT = 'login';
 
+    private const CONNECTION_OPTION = "connection";
+
     private const QUERY_SELECT_FORMAT = "SELECT login, first_name, last_name, role FROM user WHERE login = '%s'";
 
     private function getUserInfo($login)
@@ -22,7 +24,7 @@ class UserInfoTask extends sfPropelBaseTask
     private function getConnection($options)
     {
         $databaseManager = new sfDatabaseManager($this->configuration);
-        return $databaseManager->getDatabase($options['connection'] ? $options['connection'] : null)->getConnection();
+        return $databaseManager->getDatabase($options[UserInfoTask::CONNECTION_OPTION] ? $options[UserInfoTask::CONNECTION_OPTION] : null)->getConnection();
     }
 
     private function printUserInfo($userInfo)
@@ -46,7 +48,7 @@ class UserInfoTask extends sfPropelBaseTask
         $this->name = UserInfoTask::TASK_NAME;
         $this->addArgument(UserInfoTask::LOGIN_ARGUMENT, sfCommandArgument::REQUIRED);
         $this->addOptions([
-            new sfCommandOption('connection', null, sfCommandOption::PARAMETER_REQUIRED, 'The connection name', 'propel'),
+            new sfCommandOption(UserInfoTask::CONNECTION_OPTION, null, sfCommandOption::PARAMETER_REQUIRED, 'The connection name', 'propel'),
         ]);
     }
 

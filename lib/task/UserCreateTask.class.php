@@ -18,7 +18,7 @@ class UserCreateTask extends sfPropelBaseTask
     private function getConnection($options)
     {
         $databaseManager = new sfDatabaseManager($this->configuration);
-        return $databaseManager->getDatabase($options['connection'] ? $options['connection'] : null)->getConnection();
+        return $databaseManager->getDatabase($options[UserCreateTask::CONNECTION_OPTION] ? $options[UserCreateTask::CONNECTION_OPTION] : null)->getConnection();
     }
 
     private static function generateMD5Password($password)
@@ -35,9 +35,24 @@ class UserCreateTask extends sfPropelBaseTask
 
     private function checkUser($login, $password, $role)
     {
-        $result = true;
-        //TODO: Make user data validation
-        return $result;
+        $validators = [
+            UserCreateTask::LOGIN_ARGUMENT => new sfValidatorString([
+                'min_length' => 4,
+                'max_length' => 50,
+            ]),
+            UserCreateTask::PASSWORD_ARGUMENT => new sfValidatorString([
+                'min_length' => 4,
+                'max_length' => 100,
+            ]),
+            UserCreateTask::ROLE_OPTION => new sfValidatorRegex(['pattern' => "/^(user|admin)$/",], ['invalid' => 'Role can only be user or admin.']),
+        ];
+
+        $validatorSchema = new sfValidatorSchema($validators);
+        $validatorSchema->clean([
+            UserCreateTask::LOGIN_ARGUMENT => $login,
+            UserCreateTask::PASSWORD_ARGUMENT => $password,
+            UserCreateTask::ROLE_OPTION => $role,
+        ]);
     }
 
     public function configure()
@@ -60,9 +75,7 @@ class UserCreateTask extends sfPropelBaseTask
         $password = $arguments[UserCreateTask::PASSWORD_ARGUMENT];
         $role = $options[UserCreateTask::ROLE_OPTION];
 
-        if ($this->checkUser($login, $password, $role))
-        {
-            $this->createUser($login, $password, $role);
-        }
+        $this->checkUser($login, $password, $role);
+        $this->createUser($login, $password, $role);
     }
 }

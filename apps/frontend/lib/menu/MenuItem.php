@@ -4,7 +4,7 @@ class MenuItem
 {
     private const ITEM_FORMAT = "<li> <a href='%2\$s'>%1\$s</a> </li>";
 
-    private function convertRoutingLinkToHyperlinks($routingLink)
+    private static function convertRoutingLinkToHyperlinks($routingLink)
     {
         return url_for($routingLink);
     }
