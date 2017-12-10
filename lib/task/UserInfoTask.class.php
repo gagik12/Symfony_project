@@ -6,6 +6,7 @@ class UserInfoTask extends sfPropelBaseTask
 
     private const TASK_NAMESPACE = 'user';
     private const TASK_NAME = 'info';
+
     private const LOGIN_ARGUMENT = 'login';
 
     private const QUERY_SELECT_FORMAT = "SELECT login, first_name, last_name, role FROM user WHERE login = '%s'";
@@ -26,9 +27,16 @@ class UserInfoTask extends sfPropelBaseTask
 
     private function printUserInfo($userInfo)
     {
+        $outputText = "";
         $isSetFirstAndLastName = ($userInfo->first_name && $userInfo->last_name);
-        $outputText =  $isSetFirstAndLastName ? "First name - $userInfo->first_name, Last name - $userInfo->last_name, Role - $userInfo->role"
-            : $outputText = "Login - $userInfo->login";
+        if ($isSetFirstAndLastName)
+        {
+            $outputText = "First name - $userInfo->first_name, Last name - $userInfo->last_name, Role - $userInfo->role";
+        }
+        else if ($userInfo->login)
+        {
+            $outputText = "Login - $userInfo->login";
+        }
         $this->log($outputText);
     }
 
