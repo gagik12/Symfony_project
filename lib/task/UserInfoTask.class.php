@@ -5,12 +5,13 @@ class UserInfoTask extends sfPropelBaseTask
     private const TASK_NAMESPACE = 'user';
     private const TASK_NAME = 'info';
     private const CONNECTION_OPTION = "connection";
+    private const LOGIN_ARGUMENT = 'login';
 
     public function configure()
     {
         $this->namespace = UserInfoTask::TASK_NAMESPACE;
         $this->name = UserInfoTask::TASK_NAME;
-        $this->addArgument(UserPeer::LOGIN, sfCommandArgument::REQUIRED);
+        $this->addArgument(UserInfoTask::LOGIN_ARGUMENT, sfCommandArgument::REQUIRED);
         $this->addOptions([
             new sfCommandOption(UserInfoTask::CONNECTION_OPTION, null, sfCommandOption::PARAMETER_REQUIRED, 'The connection name', 'propel'),
         ]);
@@ -18,7 +19,7 @@ class UserInfoTask extends sfPropelBaseTask
 
     public function execute($arguments = [], $options = [])
     {
-        $login = $arguments[UserPeer::LOGIN];
+        $login = $arguments[UserInfoTask::LOGIN_ARGUMENT];
         $databaseManager = new sfDatabaseManager($this->configuration);
         $user = UserPeer::getUserByLogin($login);
         if ($user)
