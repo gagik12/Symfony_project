@@ -8,8 +8,6 @@ class UserCreateTask extends sfPropelBaseTask
     private const PASSWORD_ARGUMENT = 'password';
     private const CONNECTION_OPTION = "connection";
     private const ROLE_OPTION = "role";
-    private const QUERY_INSERT_FORMAT = "INSERT INTO user (login, password, role) VALUES ('%s', '%s', '%s')";
-    private $connection;
 
     public function configure()
     {
@@ -25,27 +23,16 @@ class UserCreateTask extends sfPropelBaseTask
 
     public function execute($arguments = [], $options = [])
     {
-        $this->connection = $this->getConnection($options);
+        $databaseManager = new sfDatabaseManager($this->configuration);
 
         $login = $arguments[UserCreateTask::LOGIN_ARGUMENT];
         $password = $arguments[UserCreateTask::PASSWORD_ARGUMENT];
         $role = $options[UserCreateTask::ROLE_OPTION];
 
         $this->checkUser($login, $password, $role);
-        $this->createUser($login, $password, $role);
-    }
 
-    private function getConnection($options)
-    {
-        $databaseManager = new sfDatabaseManager($this->configuration);
-        return $databaseManager->getDatabase($options[UserCreateTask::CONNECTION_OPTION] ? $options[UserCreateTask::CONNECTION_OPTION] : null)->getConnection();
-    }
-
-    private function createUser($login, $password, $role)
-    {
-        $query = sprintf(UserCreateTask::QUERY_INSERT_FORMAT, $login, $this->generateMD5Password($password), $role);
-        $statement = $this->connection->prepare($query);
-        $statement->execute();
+        UserPeer::createUser($login, $this->generateMD5Password($password), $role);
+        $this->log("User created!");
     }
 
     private function checkUser($login, $password, $role)
