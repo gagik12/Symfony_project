@@ -2,28 +2,43 @@
 
 class UserCreateTask extends sfPropelBaseTask
 {
-    private $connection;
-
     private const TASK_NAMESPACE = 'user';
     private const TASK_NAME = 'create';
-
     private const LOGIN_ARGUMENT = 'login';
     private const PASSWORD_ARGUMENT = 'password';
-
     private const CONNECTION_OPTION = "connection";
     private const ROLE_OPTION = "role";
-
     private const QUERY_INSERT_FORMAT = "INSERT INTO user (login, password, role) VALUES ('%s', '%s', '%s')";
+    private $connection;
+
+    public function configure()
+    {
+        $this->namespace = UserCreateTask::TASK_NAMESPACE;
+        $this->name = UserCreateTask::TASK_NAME;
+        $this->addArgument(UserCreateTask::LOGIN_ARGUMENT, sfCommandArgument::REQUIRED);
+        $this->addArgument(UserCreateTask::PASSWORD_ARGUMENT, sfCommandArgument::REQUIRED);
+        $this->addOptions([
+            new sfCommandOption(UserCreateTask::CONNECTION_OPTION, null, sfCommandOption::PARAMETER_REQUIRED, 'The connection name', 'propel'),
+            new sfCommandOption(UserCreateTask::ROLE_OPTION, null, sfCommandOption::PARAMETER_REQUIRED, 'Role', 'user'),
+        ]);
+    }
+
+    public function execute($arguments = [], $options = [])
+    {
+        $this->connection = $this->getConnection($options);
+
+        $login = $arguments[UserCreateTask::LOGIN_ARGUMENT];
+        $password = $arguments[UserCreateTask::PASSWORD_ARGUMENT];
+        $role = $options[UserCreateTask::ROLE_OPTION];
+
+        $this->checkUser($login, $password, $role);
+        $this->createUser($login, $password, $role);
+    }
 
     private function getConnection($options)
     {
         $databaseManager = new sfDatabaseManager($this->configuration);
         return $databaseManager->getDatabase($options[UserCreateTask::CONNECTION_OPTION] ? $options[UserCreateTask::CONNECTION_OPTION] : null)->getConnection();
-    }
-
-    private static function generateMD5Password($password)
-    {
-        return MD5($password);
     }
 
     private function createUser($login, $password, $role)
@@ -55,27 +70,8 @@ class UserCreateTask extends sfPropelBaseTask
         ]);
     }
 
-    public function configure()
+    private static function generateMD5Password($password)
     {
-        $this->namespace = UserCreateTask::TASK_NAMESPACE;
-        $this->name = UserCreateTask::TASK_NAME;
-        $this->addArgument(UserCreateTask::LOGIN_ARGUMENT, sfCommandArgument::REQUIRED);
-        $this->addArgument(UserCreateTask::PASSWORD_ARGUMENT, sfCommandArgument::REQUIRED);
-        $this->addOptions([
-            new sfCommandOption(UserCreateTask::CONNECTION_OPTION, null, sfCommandOption::PARAMETER_REQUIRED, 'The connection name', 'propel'),
-            new sfCommandOption(UserCreateTask::ROLE_OPTION, null, sfCommandOption::PARAMETER_REQUIRED, 'Role', 'user'),
-        ]);
-    }
-
-    public function execute($arguments = [], $options = [])
-    {
-        $this->connection = $this->getConnection($options);
-
-        $login = $arguments[UserCreateTask::LOGIN_ARGUMENT];
-        $password = $arguments[UserCreateTask::PASSWORD_ARGUMENT];
-        $role = $options[UserCreateTask::ROLE_OPTION];
-
-        $this->checkUser($login, $password, $role);
-        $this->createUser($login, $password, $role);
+        return MD5($password);
     }
 }
