@@ -39,7 +39,7 @@ class CreateUserTask extends sfPropelBaseTask
     private function checkUser($login, $password, $role)
     {
         $userRoles = UserRole::USER . "|" . UserRole::ADMIN;
-        echo "/^({$userRoles})/";
+
         $validators = [
             CreateUserTask::LOGIN_ARGUMENT => new sfValidatorString([
                 'min_length' => 4,
