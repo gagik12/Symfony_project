@@ -1,6 +1,11 @@
 <div class="header">
-    <?
-    $headerMenu = new HeaderMenuGenerator();
-    echo $headerMenu->generateMenu();
-    ?>
+    <ul>
+        <?
+        $headerMenu = new HeaderMenu();
+        $items = $headerMenu->generateItems();
+        ?>
+        <? foreach ($items as $item): ?>
+            <li><a href="<?= $item->getLink() ?>"><?= $item->getTitle() ?></a></li>
+        <? endforeach; ?>
+    </ul>
 </div>
