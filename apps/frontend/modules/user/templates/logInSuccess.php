@@ -1,4 +1,4 @@
-<? /** @var sfForm $form */ ?>
+<? /** @var sfForm $logInform */ ?>
 <form method="post" action="">
     <div>
         <?= $logInform['login']->render() ?>
@@ -9,11 +9,4 @@
     </div>
 </form>
 
-<ul class="error_list">
-    <? $errors = $logInform->getErrorSchema()->getErrors() ?>
-    <? if (count($errors) > 0) : ?>
-        <? foreach ($errors as $name => $error) : ?>
-            <li><?= $error ?></li>
-        <? endforeach ?>
-    <? endif ?>
-</ul>
+<? include_partial('print_error_messages', ['form' => $logInform]) ?>

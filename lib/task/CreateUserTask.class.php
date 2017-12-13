@@ -32,7 +32,7 @@ class CreateUserTask extends sfPropelBaseTask
 
         $this->checkUser($login, $password, $role);
 
-        UserPeer::createUser($login, $this->generateMD5Password($password), $role);
+        UserPeer::createUser($login, $password, $role);
         $this->log("User has been created.");
     }
 
@@ -58,10 +58,5 @@ class CreateUserTask extends sfPropelBaseTask
             CreateUserTask::PASSWORD_ARGUMENT => $password,
             CreateUserTask::ROLE_OPTION => $role,
         ]);
-    }
-
-    private static function generateMD5Password($password)
-    {
-        return MD5($password);
     }
 }

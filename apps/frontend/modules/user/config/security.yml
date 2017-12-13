@@ -8,3 +8,6 @@ login:
 profile:
   is_secure: true
   credentials: [[admin, user]]
+
+registration:
+  is_secure: false

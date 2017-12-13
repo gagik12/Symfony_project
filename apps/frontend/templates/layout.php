@@ -4,7 +4,7 @@
     <body>
         <?
         include_partial('global/header');
-        include_partial('global/main_container', array('content' => $sf_content))
+        include_partial('global/main_container', ['content' => $sf_content])
         ?>
     </body>
 </html>

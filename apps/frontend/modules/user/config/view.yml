@@ -3,6 +3,11 @@ logInSuccess:
     title: Вход
   layout: layout_without_header
 
+registrationSuccess:
+  metas:
+    title: Регистрация
+  layout: layout_without_header
+
 userListSuccess:
   metas:
     title: Список пользователей
