@@ -2,8 +2,8 @@
 
 class LogInForm extends sfForm
 {
-    private const LOGIN = "login";
-    private const PASSWORD = "password";
+    public const LOGIN = "login";
+    public const PASSWORD = "password";
 
     private const ERROR_MESSAGES =  [
         "required_login" => "Логин: обязательный параметр!",
@@ -21,33 +21,8 @@ class LogInForm extends sfForm
             LogInForm::LOGIN  => new sfValidatorString(['required' => true], ['required' => LogInForm::ERROR_MESSAGES['required_login']]),
             LogInForm::PASSWORD => new sfValidatorString(['required' => true], ['required' => LogInForm::ERROR_MESSAGES['required_password']]),
         ]);
-        $this->validatorSchema->setPostValidator(new sfValidatorCallback(['callback' => [$this, 'checkUser']]));
+        $this->validatorSchema->setPostValidator(new ValidatorUserExist());
         $this->getWidgetSchema()->setNameFormat('logIn[%s]');
     }
 
-    public function checkUser($validator, $values)
-    {
-        if ($values[LogInForm::LOGIN] && $values[LogInForm::PASSWORD])
-        {
-            $criteria = $this->getLogInCriteria($values);
-            $userFromDatabase = UserPeer::doSelectOne($criteria);
-            if ($userFromDatabase)
-            {
-                sfContext::getInstance()->getUser()->logIn($userFromDatabase);
-            }
-            else
-            {
-                $error = new sfValidatorError($validator, LogInForm::ERROR_MESSAGES['user_not_found']);
-                throw new sfValidatorErrorSchema($validator, [LogInForm::LOGIN => $error]);
-            }
-        }
-    }
-
-    private function getLogInCriteria($values)
-    {
-        $criteria = new Criteria();
-        $criteria->add(UserPeer::LOGIN, $values[LogInForm::LOGIN]);
-        $criteria->add(UserPeer::PASSWORD, MD5($values[LogInForm::PASSWORD]));
-        return $criteria;
-    }
 }
