@@ -30,33 +30,31 @@ class CreateUserTask extends sfPropelBaseTask
         $password = $arguments[CreateUserTask::PASSWORD_ARGUMENT];
         $role = $options[CreateUserTask::ROLE_OPTION];
 
-        $this->checkUser($login, $password, $role);
-
-        UserPeer::createUser($login, $password, $role);
-        $this->log("User has been created.");
+        if ($this->checkUser($login, $password, $role))
+        {
+            UserPeer::createUser($login, $password, $role);
+            $this->log("User has been created.");
+        }
     }
 
     private function checkUser($login, $password, $role)
     {
-        $userRoles = UserRole::USER . "|" . UserRole::ADMIN;
-
-        $validators = [
-            CreateUserTask::LOGIN_ARGUMENT => new sfValidatorString([
-                'min_length' => 4,
-                'max_length' => 50,
-            ]),
-            CreateUserTask::PASSWORD_ARGUMENT => new sfValidatorString([
-                'min_length' => 4,
-                'max_length' => 100,
-            ]),
-            CreateUserTask::ROLE_OPTION => new sfValidatorRegex(['pattern' => "/^({$userRoles})$/"], ['invalid' => 'Role can only be user or admin.']),
-        ];
-
-        $validatorSchema = new sfValidatorSchema($validators);
-        $validatorSchema->clean([
+        $form = new UserForm();
+        $userParameter = [
             CreateUserTask::LOGIN_ARGUMENT => $login,
             CreateUserTask::PASSWORD_ARGUMENT => $password,
             CreateUserTask::ROLE_OPTION => $role,
-        ]);
+        ];
+        $form->bind($userParameter);
+        $isValid = $form->isValid();
+        if (!$isValid)
+        {
+            $errors = $form->getErrorSchema()->getErrors();
+            foreach ($errors as $name => $error)
+            {
+                $this->log($error);
+            }
+        }
+        return $isValid;
     }
 }
