@@ -22,7 +22,7 @@ class logInAction extends sfAction
         $form->bind($userParameter);
         if ($form->isValid())
         {
-            $userFromDatabase = UserPeer::getUserByLoginAndPassword($userParameter[LogInForm::LOGIN], MD5($userParameter[LogInForm::PASSWORD]));
+            $userFromDatabase = UserPeer::getUserFromDatabase($userParameter[LogInForm::LOGIN], MD5($userParameter[LogInForm::PASSWORD]));
             $this->getUser()->logIn($userFromDatabase);
             $userRole = $this->getUser()->getLoggedUser()->getRole();
             $url = ($userRole == UserRole::ADMIN) ? '@user_list' : '@user_profile';

@@ -21,7 +21,7 @@ class UserInfoTask extends sfPropelBaseTask
     {
         $login = $arguments[UserInfoTask::LOGIN_ARGUMENT];
         $databaseManager = new sfDatabaseManager($this->configuration);
-        $user = UserPeer::getUserByLogin($login);
+        $user = UserPeer::getUserFromDatabase($login);
         if ($user)
         {
             $this->printUserInfo($user);

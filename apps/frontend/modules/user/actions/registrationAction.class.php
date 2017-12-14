@@ -26,7 +26,7 @@ class registrationAction extends sfAction
             $login = $userParameter[UserForm::LOGIN];
             $password = $userParameter[UserForm::LOGIN];
             $fisrtName = $userParameter[UserForm::FIRST_NAME];
-            $lastName = $userParameter[UserForm::LOGIN];
+            $lastName = $userParameter[UserForm::LAST_NAME];
             UserPeer::createUser($login, $password, registrationAction::DEFAULT_ROLE, $fisrtName, $lastName);
             $this->redirect('@log_in');
         }
