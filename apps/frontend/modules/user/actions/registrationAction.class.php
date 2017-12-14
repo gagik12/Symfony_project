@@ -6,6 +6,10 @@ class registrationAction extends sfAction
 
     public function execute($request)
     {
+        if ($this->getUser()->isAuthenticated())
+        {
+            $this->redirect('@user_profile');
+        }
         $this->registrationForm = new UserForm();
         if ($request->isMethod(sfRequest::POST))
         {

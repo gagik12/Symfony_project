@@ -3,22 +3,36 @@
 class HeaderMenu
 {
     private const LINKS_FOR_ADMIN = [
-        "Profile" => "@user_profile",
-        "User List" => "@user_list",
-        "Log Out" => "@log_out",
+        "Профиль" => "@user_profile",
+        "Список пользователей" => "@user_list",
+        "Выход" => "@log_out",
     ];
 
     private const LINKS_FOR_USER = [
-        "Profile" => "@user_profile",
-        "Log Out" => "@log_out",
+        "Профиль" => "@user_profile",
+        "Выход" => "@log_out",
+    ];
+
+    private const LINKS_FOR_UNAUTHORIZED_USER = [
+        "Вход" => "@log_in",
+        "Регистрация" => "@registration",
     ];
 
     public function generateItems()
     {
+        $user = sfContext::getInstance()->getUser();
+
+        $links = null;
+        if(!$user->isAuthenticated())
+        {
+            $links = HeaderMenu::LINKS_FOR_UNAUTHORIZED_USER;
+        }
+        else
+        {
+            $links = ($user->isAdmin()) ? HeaderMenu::LINKS_FOR_ADMIN : HeaderMenu::LINKS_FOR_USER;
+        }
+
         $menuItems = [];
-        $isAdmin = sfContext::getInstance()->getUser()->isAdmin();
-        $links = ($isAdmin) ? HeaderMenu::LINKS_FOR_ADMIN : HeaderMenu::LINKS_FOR_USER;
-        $this->menuItems = [];
         foreach ($links as $title => $link)
         {
             $menuItems[] = new MenuItem($title, url_for($link));
