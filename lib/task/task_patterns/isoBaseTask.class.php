@@ -16,17 +16,9 @@ abstract class isoBaseTask extends sfBaseTask
         }
     }
 
-    /**
-     * Your should use executeTask method instead!
-     *
-     * @param array $arguments
-     * @param array $options
-     * @return mixed
-     * @throws Exception
-     */
-    final protected function execute($arguments = array(), $options = array())
+    final protected function execute($arguments = [], $options = [])
     {
-        register_shutdown_function(array($this, "checkTaskFatalError"));
+        register_shutdown_function([$this, "checkTaskFatalError"]);
         isoErrorReporting::getInstance()->register();
 
         try
@@ -38,15 +30,9 @@ abstract class isoBaseTask extends sfBaseTask
             isoErrorReporting::getInstance()->exceptionHandler($e, "Exception occurred in task " . get_class($this));
             throw $e;
         }
-
     }
 
-    /**
-     * @param array $arguments
-     * @param array $options
-     * @return mixed
-     */
-    abstract protected function executeTask($arguments = array(), $options = array());
+    abstract protected function executeTask($arguments = [], $options = []);
 
     protected function initializeContext(array $arguments, array $options)
     {

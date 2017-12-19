@@ -29,4 +29,9 @@ class myUser extends sfBasicSecurityUser
     {
         return $this->hasCredential(UserRole::ADMIN);
     }
+
+    public function getUserRole(): string
+    {
+        return $this->getLoggedUser()->getRole();
+    }
 }

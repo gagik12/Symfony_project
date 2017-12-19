@@ -2,7 +2,8 @@
     <ul>
         <?
         $headerMenu = new HeaderMenu();
-        $items = $headerMenu->generateItems();
+        $headerMenu->generateItems();
+        $items = $headerMenu->getMenuItems();
         ?>
         <? foreach ($items as $item): ?>
             <li><a href="<?= $item->getLink() ?>"><?= $item->getTitle() ?></a></li>

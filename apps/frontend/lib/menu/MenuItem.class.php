@@ -5,18 +5,18 @@ class MenuItem
     private $title;
     private $link;
 
-    public function __construct($title, $link)
+    public function __construct(string $title, string $link)
     {
         $this->title = $title;
         $this->link = $link;
     }
 
-    public function getTitle()
+    public function getTitle(): string
     {
         return $this->title;
     }
 
-    public function getLink()
+    public function getLink(): string
     {
         return $this->link;
     }
