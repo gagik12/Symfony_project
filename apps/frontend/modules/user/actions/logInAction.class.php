@@ -23,7 +23,7 @@ class logInAction extends sfAction
         {
             $login = $form->getValue(LogInForm::LOGIN);
             $password = $form->getValue(LogInForm::PASSWORD);
-            $userFromDatabase = UserPeer::getUserFromDatabase($login, MD5($password));
+            $userFromDatabase = UserPeer::getUserFromDatabase($login, $password);
             $user = $this->getUser();
             $user->logIn($userFromDatabase);
             $url = ($user->isAdmin()) ? '@user_list' : '@user_profile';

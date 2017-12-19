@@ -175,7 +175,7 @@ abstract class BaseUser extends BaseObject implements Persistent
         }
 
         if ($this->password !== $v) {
-            $this->password = $v;
+            $this->password = Functions::getMD5Password($v);
             $this->modifiedColumns[] = UserPeer::PASSWORD;
         }
 

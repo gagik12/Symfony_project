@@ -8,7 +8,7 @@ class UserPeer extends BaseUserPeer
         $criteria->add(UserPeer::LOGIN, $login);
         if ($password)
         {
-            $criteria->add(UserPeer::PASSWORD, $password);
+            $criteria->add(UserPeer::PASSWORD, Functions::getMD5Password($password));
         }
         return UserPeer::doSelectOne($criteria);
     }
@@ -18,7 +18,7 @@ class UserPeer extends BaseUserPeer
         $user = new User();
 
         $user->setLogin($login);
-        $user->setPassword(MD5($password));
+        $user->setPassword($password);
         $user->setFirstName($firstName);
         $user->setLastName($lastName);
         $user->setRole($role);
