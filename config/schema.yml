@@ -4,7 +4,7 @@ propel:
     defaultIdMethod: native
   user:
     _attributes: { phpName: User }
-    id: { type: INTEGER, primaryKey: true, autoIncrement: true, required: true }
+    id: { type: integer, primaryKey: true, autoIncrement: true, required: true }
     login: { type: varchar(50), required: true }
     password: { type: varchar(100), required: true }
     first_name: { type: varchar(255), required: false }
