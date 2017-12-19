@@ -5,7 +5,7 @@ class LogInForm extends sfForm
     public const LOGIN = "login";
     public const PASSWORD = "password";
 
-    private const ERROR_MESSAGES =  [
+    private const ERROR_MESSAGES = [
         "required_login" => "Логин: обязательный параметр!",
         "required_password" => "Пароль: обязательный параметр!",
         "user_not_found" => "Неправильное имя пользователя или пароль!",
@@ -18,7 +18,7 @@ class LogInForm extends sfForm
             LogInForm::PASSWORD => new sfWidgetFormInputPassword([], ['placeholder' => 'Пароль']),
         ]);
         $this->setValidators([
-            LogInForm::LOGIN  => new sfValidatorString(['required' => true], ['required' => LogInForm::ERROR_MESSAGES['required_login']]),
+            LogInForm::LOGIN => new sfValidatorString(['required' => true], ['required' => LogInForm::ERROR_MESSAGES['required_login']]),
             LogInForm::PASSWORD => new sfValidatorString(['required' => true], ['required' => LogInForm::ERROR_MESSAGES['required_password']]),
         ]);
         $this->validatorSchema->setPostValidator(new ValidatorUserExist());

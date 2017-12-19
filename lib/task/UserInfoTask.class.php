@@ -1,6 +1,6 @@
 <?php
 
-class UserInfoTask extends sfPropelBaseTask
+class UserInfoTask extends isoBaseTask
 {
     private const TASK_NAMESPACE = 'user';
     private const TASK_NAME = 'info';
@@ -17,10 +17,9 @@ class UserInfoTask extends sfPropelBaseTask
         ]);
     }
 
-    public function execute($arguments = [], $options = [])
+    public function executeTask($arguments = [], $options = [])
     {
         $login = $arguments[UserInfoTask::LOGIN_ARGUMENT];
-        $databaseManager = new sfDatabaseManager($this->configuration);
         $user = UserPeer::getUserFromDatabase($login);
         if ($user)
         {
@@ -28,11 +27,11 @@ class UserInfoTask extends sfPropelBaseTask
         }
         else
         {
-            $this->log("User not found!");
+            $this->log('User not found!');
         }
     }
 
-    private function printUserInfo($user)
+    private function printUserInfo(User $user)
     {
         $login = $user->getLogin();
         $firstName = $user->getFirstName();

@@ -1,6 +1,6 @@
 <?php
 
-class CreateUserTask extends sfPropelBaseTask
+class CreateUserTask extends isoBaseTask
 {
     private const TASK_NAMESPACE = 'user';
     private const TASK_NAME = 'create';
@@ -22,10 +22,8 @@ class CreateUserTask extends sfPropelBaseTask
         ]);
     }
 
-    public function execute($arguments = [], $options = [])
+    public function executeTask($arguments = [], $options = [])
     {
-        $databaseManager = new sfDatabaseManager($this->configuration);
-
         $login = $arguments[CreateUserTask::LOGIN_ARGUMENT];
         $password = $arguments[CreateUserTask::PASSWORD_ARGUMENT];
         $role = $options[CreateUserTask::ROLE_OPTION];
@@ -37,7 +35,7 @@ class CreateUserTask extends sfPropelBaseTask
         }
     }
 
-    private function checkUser($login, $password, $role)
+    private function checkUser(string $login, string $password, string $role)
     {
         $form = new UserForm();
         $userParameter = [

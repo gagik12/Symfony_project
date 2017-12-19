@@ -6,7 +6,7 @@ class UserPeer extends BaseUserPeer
     {
         $criteria = new Criteria();
         $criteria->add(UserPeer::LOGIN, $login);
-        if($password)
+        if ($password)
         {
             $criteria->add(UserPeer::PASSWORD, $password);
         }
@@ -16,11 +16,13 @@ class UserPeer extends BaseUserPeer
     public static function createUser($login, $password, $role, $firstName = "", $lastName = "")
     {
         $user = new User();
-        $user->setLogin($login)
-             ->setPassword(MD5($password))
-             ->setFirstName($firstName)
-             ->setLastName($lastName)
-             ->setRole($role);
+
+        $user->setLogin($login);
+        $user->setPassword(MD5($password));
+        $user->setFirstName($firstName);
+        $user->setLastName($lastName);
+        $user->setRole($role);
+
         $user->save();
     }
 }
