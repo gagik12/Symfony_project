@@ -12,18 +12,17 @@ class logInAction extends sfAction
         $this->logInform = new LogInForm();
         if ($request->isMethod(sfRequest::POST))
         {
-            $this->processForm($request, $this->logInform);
+            $this->processForm($request);
         }
     }
 
-    protected function processForm(sfWebRequest $request, sfForm $form)
+    protected function processForm(sfWebRequest $request)
     {
-        $form->bind($request->getParameter($form->getName()));
-        if ($form->isValid())
+        $this->logInform->bind($request->getParameter($this->logInform->getName()));
+        if ($this->logInform->isValid())
         {
-            $login = $form->getValue(LogInForm::LOGIN);
-            $password = $form->getValue(LogInForm::PASSWORD);
-            $userFromDatabase = UserPeer::getUserFromDatabase($login, $password);
+            $userData = new UserData($this->logInform->getValues());
+            $userFromDatabase = UserPeer::getUserFromDatabase($userData);
             $user = $this->getUser();
             $user->logIn($userFromDatabase);
             $url = ($user->isAdmin()) ? '@user_list' : '@user_profile';

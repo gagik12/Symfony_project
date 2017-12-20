@@ -23,11 +23,8 @@ class registrationAction extends sfAction
         $this->registrationForm->bind($userParameter);
         if ($this->registrationForm->isValid())
         {
-            $login = $userParameter[UserForm::LOGIN];
-            $password = $userParameter[UserForm::PASSWORD];
-            $fisrtName = $userParameter[UserForm::FIRST_NAME];
-            $lastName = $userParameter[UserForm::LAST_NAME];
-            UserPeer::createUser($login, $password, registrationAction::DEFAULT_ROLE, $fisrtName, $lastName);
+            $userData = new UserData($this->registrationForm->getValues());
+            UserPeer::createUser($userData, registrationAction::DEFAULT_ROLE);
             $this->redirect('@log_in');
         }
     }
