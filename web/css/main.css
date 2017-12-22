@@ -6,12 +6,14 @@
 body {
     margin: 0;
     font-family: Hel-Light;
-    background-color: #42A5F5;
+    background-color: rgb(0, 121, 191);
 }
 
 form {
     padding-top: 100px;
-    width: 295px;
+    width: 90%;
+    max-width: 295px;
+    min-width: 100px;
     margin: 0 auto;
 }
 
@@ -37,7 +39,7 @@ a {
 
 form input[type="text"], form input[type="password"], form input[type="email"] {
     border: solid 1px #C0C0C0;
-    width: 295px;
+    width: 100%;
     padding: 7px;
     font-size: 13pt;
     border-radius: 3px;
@@ -49,7 +51,7 @@ input[type="submit"]:hover, input[type="button"]:hover {
 
 input[type="submit"], input[type="button"] {
     cursor: pointer;
-    width: 312px;
+    width: 100%;
     border: none;
     font-weight: 700;
     color: white;
@@ -118,4 +120,43 @@ table {
     border: solid 1px #000000;
     font-weight: 600;
     margin-right: 10px;
+}
+
+.navbar-default {
+    background: #026aa7;
+}
+
+.navbar {
+    border-radius: 0;
+    border: 0;
+}
+
+.navbar-default .navbar-nav>li>a {
+    color: #fff;
+    font-weight: 400;
+    font-size: 19px;
+}
+
+
+.navbar-default .navbar-nav>li>a:hover {
+    color: #fff;
+}
+
+.navbar-default .navbar-collapse, .navbar-default .navbar-form {
+    border-color: #026aa7;
+    text-align: center;
+}
+
+.navbar-nav {
+    display: inline-block;
+    text-align: initial;
+    float: none;
+}
+
+.navbar-default .navbar-toggle {
+    border-color: #000;
+}
+
+.navbar-default .navbar-toggle .icon-bar {
+    background-color: #000;
 }
