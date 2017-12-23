@@ -80,18 +80,30 @@ table {
 
 .boxer {
     display: table;
-    border-collapse: collapse;
     margin: 0 auto;
     width: 450px;
+    border-collapse: separate;
+    border-spacing: 7px 11px;
 }
 
 .boxer .box-row {
     display: table-row;
 }
 
+.box-row .box {
+    background: hsla(0,0%,100%,.3);
+    border-radius: 8px;
+    color: #f3f3f3;
+    font-weight: 700;
+    line-height: 30px;
+    text-align: center;
+    margin-right: 8px;
+    min-width: 30px;
+}
+
 .boxer .box {
     display: table-cell;
-    text-align: left;
+    text-align: center;
     vertical-align: top;
 }
 
