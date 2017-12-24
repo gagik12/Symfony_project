@@ -101,6 +101,17 @@ table {
     min-width: 30px;
 }
 
+.btn-block {
+    max-width: 220px;
+    min-width: 100px;
+    margin: 0 auto;
+    margin-bottom: 30px;
+}
+.btn-block img
+{
+    margin: 10px auto;
+    display: block;
+}
 .boxer .box {
     display: table-cell;
     text-align: center;

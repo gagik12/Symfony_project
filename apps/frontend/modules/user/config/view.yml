@@ -9,3 +9,4 @@ registrationSuccess:
 userListSuccess:
   metas:
     title: Список пользователей
+  javascripts: [UserListLoader.js, main.js]
