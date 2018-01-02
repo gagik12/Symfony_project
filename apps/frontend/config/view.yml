@@ -9,9 +9,9 @@ default:
     #language:     en
     #robots:       index, follow
 
-  stylesheets:    [bootstrap.min.css, main.css]
+  stylesheets:    [vendor/bootstrap.min.css, main.css]
 
-  javascripts:    [jquery-3.2.1.js, bootstrap.min.js]
+  javascripts:    [vendor/jquery-3.2.1.js, vendor/bootstrap.min.js]
 
   has_layout:     true
   layout:         layout

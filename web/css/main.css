@@ -1,15 +1,12 @@
-@font-face {
-    font-family: Hel-Light;
-    src: url(../font/helveticaneuecyr-light.otf);
-}
-
-body {
+body
+{
     margin: 0;
-    font-family: Hel-Light;
+    font-family: 'Roboto', sans-serif;
     background-color: rgb(0, 121, 191);
 }
 
-form {
+form
+{
     padding-top: 100px;
     width: 90%;
     max-width: 295px;
@@ -17,27 +14,32 @@ form {
     margin: 0 auto;
 }
 
-input {
+input
+{
     margin-top: 20px;
 }
 
-h1, h3 {
+h1, h3
+{
     color: white;
     margin-top: 100px;
     text-align: center;
 }
 
-h2 {
+h2
+{
     color: white;
     margin-top: 0;
 }
 
-a {
+a
+{
     text-decoration: none;
     color: white;
 }
 
-form input[type="text"], form input[type="password"], form input[type="email"] {
+form input[type="text"], form input[type="password"], form input[type="email"]
+{
     border: solid 1px #C0C0C0;
     width: 100%;
     padding: 7px;
@@ -45,11 +47,13 @@ form input[type="text"], form input[type="password"], form input[type="email"] {
     border-radius: 3px;
 }
 
-input[type="submit"]:hover, input[type="button"]:hover {
-    background: rgb(82,93,145);
+input[type="submit"]:hover, input[type="button"]:hover
+{
+    background: rgb(82, 93, 145);
 }
 
-input[type="submit"], input[type="button"] {
+input[type="submit"], input[type="button"]
+{
     cursor: pointer;
     width: 100%;
     border: none;
@@ -58,27 +62,31 @@ input[type="submit"], input[type="button"] {
     text-decoration: none;
     padding: .8em 1em calc(.8em + 3px);
     border-radius: 3px;
-    background: rgb(102,114,179);
-    box-shadow: 0 -3px rgb(82,93,145) inset;
+    background: rgb(102, 114, 179);
+    box-shadow: 0 -3px rgb(82, 93, 145) inset;
     transition: 0.2s;
 }
 
-.error_list {
+.error_list
+{
     text-align: center;
     list-style-type: none;
 }
 
-.error_list li {
+.error_list li
+{
     color: white;
     font-weight: 600;
     font-size: 20px;
 }
 
-table {
+table
+{
     margin: 0 auto;
 }
 
-.boxer {
+.boxer
+{
     display: table;
     margin: 0 auto;
     width: 450px;
@@ -86,14 +94,16 @@ table {
     border-spacing: 7px 11px;
 }
 
-.boxer .box-row {
+.boxer .box-row
+{
     display: table-row;
 }
 
-.box-row .box {
-    background: hsla(0,0%,100%,.3);
+.box-row .box
+{
+    background: hsla(0, 0%, 100%, .3);
     border-radius: 8px;
-    color: #f3f3f3;
+    color: #F3F3F3;
     font-weight: 700;
     line-height: 30px;
     text-align: center;
@@ -101,42 +111,50 @@ table {
     min-width: 30px;
 }
 
-.btn-block {
+.btn-block
+{
     max-width: 220px;
     min-width: 100px;
     margin: 0 auto;
     margin-bottom: 30px;
 }
+
 .btn-block img
 {
     margin: 10px auto;
     display: block;
 }
-.boxer .box {
+
+.boxer .box
+{
     display: table-cell;
     text-align: center;
     vertical-align: top;
 }
 
-.column_name {
+.column_name
+{
     color: white;
     font-weight: 600;
     font-size: 20px;
 }
 
-.header {
+.header
+{
     text-align: center;
     background: #64B5F6;
-    color: #fff;
+    color: #FFFFFF;
     padding: 1em;
 }
 
-.user_info {
+.user_info
+{
     margin: 50px auto;
     display: table;
 }
 
-.header li {
+.header li
+{
     display: inline;
     list-style: none;
     padding: 5px;
@@ -145,41 +163,48 @@ table {
     margin-right: 10px;
 }
 
-.navbar-default {
-    background: #026aa7;
+.navbar-default
+{
+    background: #026AA7;
 }
 
-.navbar {
+.navbar
+{
     border-radius: 0;
     border: 0;
 }
 
-.navbar-default .navbar-nav>li>a {
-    color: #fff;
+.navbar-default .navbar-nav > li > a
+{
+    color: #FFFFFF;
     font-weight: 400;
     font-size: 19px;
 }
 
-
-.navbar-default .navbar-nav>li>a:hover {
-    color: #fff;
+.navbar-default .navbar-nav > li > a:hover
+{
+    color: #FFFFFF;
 }
 
-.navbar-default .navbar-collapse, .navbar-default .navbar-form {
-    border-color: #026aa7;
+.navbar-default .navbar-collapse, .navbar-default .navbar-form
+{
+    border-color: #026AA7;
     text-align: center;
 }
 
-.navbar-nav {
+.navbar-nav
+{
     display: inline-block;
     text-align: initial;
     float: none;
 }
 
-.navbar-default .navbar-toggle {
-    border-color: #000;
+.navbar-default .navbar-toggle
+{
+    border-color: #000000;
 }
 
-.navbar-default .navbar-toggle .icon-bar {
-    background-color: #000;
+.navbar-default .navbar-toggle .icon-bar
+{
+    background-color: #000000;
 }

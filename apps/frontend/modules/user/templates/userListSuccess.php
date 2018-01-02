@@ -2,7 +2,7 @@
 <h1>Users</h1>
 <div class="boxer">
     <div class="box-row">
-        <div class="box column_name">Id</div>
+        <div class="box column_name">Login</div>
         <div class="box column_name">First name</div>
         <div class="box column_name">Last name</div>
         <div class="box column_name">User role</div>
