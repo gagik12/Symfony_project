@@ -1,5 +1,5 @@
 <?php
-
+/** @property sfForm $registrationForm */
 class registrationAction extends sfAction
 {
     private const DEFAULT_ROLE = UserRole::USER;
@@ -23,8 +23,9 @@ class registrationAction extends sfAction
         $this->registrationForm->bind($userParameter);
         if ($this->registrationForm->isValid())
         {
-            $userData = new UserData($this->registrationForm->getValues());
-            UserPeer::createUser($userData, registrationAction::DEFAULT_ROLE);
+            $this->registrationForm->populateUser();
+            $user = $this->registrationForm->getUser();
+            $user->save();
             $this->redirect('@log_in');
         }
     }

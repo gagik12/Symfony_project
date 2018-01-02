@@ -16,7 +16,8 @@ abstract class BaseUserForm extends BaseFormPropel
     public const PASSWORD = "password";
     public const FIRST_NAME = "first_name";
     public const LAST_NAME = "last_name";
-    private const ROLE = "role";
+    public const ROLE = "role";
+
     private const ID = "ID";
 
     private const MAX_LOGIN_LENGTH = 50;

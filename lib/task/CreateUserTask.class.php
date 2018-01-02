@@ -26,22 +26,26 @@ class CreateUserTask extends isoBaseTask
     {
         $role = $options[CreateUserTask::ROLE_OPTION];
         $userData = new UserData($arguments);
-        if ($this->checkUser($userData, $role))
+
+        $form = new UserForm();
+        $userParameter = [
+            CreateUserTask::LOGIN_ARGUMENT => $arguments[CreateUserTask::LOGIN_ARGUMENT],
+            CreateUserTask::PASSWORD_ARGUMENT => $arguments[CreateUserTask::PASSWORD_ARGUMENT],
+            CreateUserTask::ROLE_OPTION => $role,
+        ];
+        $form->bind($userParameter);
+
+        if ($this->checkForm($form))
         {
-            UserPeer::createUser($userData, $role);
+            $form->populateUser();
+            $user = $form->getUser();
+            $user->save();
             $this->log("User has been created.");
         }
     }
 
-    private function checkUser(UserData $userData, string $role)
+    private function checkForm(UserForm $form)
     {
-        $form = new UserForm();
-        $userParameter = [
-            CreateUserTask::LOGIN_ARGUMENT => $userData->getLogin(),
-            CreateUserTask::PASSWORD_ARGUMENT => $userData->getPassword(),
-            CreateUserTask::ROLE_OPTION => $role,
-        ];
-        $form->bind($userParameter);
         $isValid = $form->isValid();
         if (!$isValid)
         {
