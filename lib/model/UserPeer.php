@@ -13,4 +13,19 @@ class UserPeer extends BaseUserPeer
         }
         return UserPeer::doSelectOne($criteria);
     }
+
+    public static function deleteUser($login): bool
+    {
+        $isDeleted = false;
+
+        $criteria = new Criteria();
+        $criteria->add(self::LOGIN, $login);
+
+        if (UserPeer::exists($criteria))
+        {
+            UserPeer::doDelete($criteria);
+            $isDeleted = true;
+        }
+        return $isDeleted;
+    }
 }

@@ -19,7 +19,6 @@ class UserInfoTask extends isoBaseTask
 
     public function executeTask($arguments = [], $options = [])
     {
-        //$userData = new UserData($arguments);
         $login = $arguments[LogInForm::LOGIN];
         $user = UserPeer::getUserFromDatabase($login);
         if ($user)
