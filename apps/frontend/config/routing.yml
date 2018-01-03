@@ -1,5 +1,5 @@
-user_profile:
-    url:   /user/user_profile
+profile:
+    url:   /user/profile
     param: { module: user, action: userProfile }
 
 user_list:
@@ -13,6 +13,10 @@ log_in:
 log_out:
     url:   /user/log_out
     param: { module: user, action: logOut }
+
+edit:
+    url:   /user/edit
+    param: { module: user, action: editUser }
 
 registration:
     url:   /user/registration

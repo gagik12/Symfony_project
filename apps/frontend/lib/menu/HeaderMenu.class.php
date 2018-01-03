@@ -3,7 +3,7 @@
 class HeaderMenu
 {
     private const LINKS_FOR_AUTHORIZED_USER = [
-        "Профиль" => "@user_profile",
+        "Профиль" => "@profile",
         "Выход" => "@log_out",
     ];
 

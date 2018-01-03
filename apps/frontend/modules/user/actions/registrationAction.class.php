@@ -2,13 +2,11 @@
 /** @property sfForm $registrationForm */
 class registrationAction extends sfAction
 {
-    private const DEFAULT_ROLE = UserRole::USER;
-
     public function execute($request)
     {
         if ($this->getUser()->isAuthenticated())
         {
-            $this->redirect('@user_profile');
+            $this->redirect('@profile');
         }
         $this->registrationForm = new UserForm();
         if ($request->isMethod(sfRequest::POST))

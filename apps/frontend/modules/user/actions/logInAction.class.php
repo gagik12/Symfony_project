@@ -7,7 +7,7 @@ class logInAction extends sfAction
     {
         if ($this->getUser()->isAuthenticated())
         {
-            $this->redirect('@user_profile');
+            $this->redirect('@profile');
         }
         $this->logInform = new LogInForm();
         if ($request->isMethod(sfRequest::POST))
@@ -26,7 +26,7 @@ class logInAction extends sfAction
             $userFromDatabase = UserPeer::getUserFromDatabase($login, $password);
             $user = $this->getUser();
             $user->logIn($userFromDatabase);
-            $url = ($user->isAdmin()) ? '@user_list' : '@user_profile';
+            $url = ($user->isAdmin()) ? '@user_list' : '@profile';
             $this->redirect($url);
         }
     }
