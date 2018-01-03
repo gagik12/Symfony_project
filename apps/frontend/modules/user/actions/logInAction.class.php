@@ -21,8 +21,9 @@ class logInAction extends sfAction
         $this->logInform->bind($request->getParameter($this->logInform->getName()));
         if ($this->logInform->isValid())
         {
-            $userData = new UserData($this->logInform->getValues());
-            $userFromDatabase = UserPeer::getUserFromDatabase($userData);
+            $login = $this->logInform->getValue(LogInForm::LOGIN);
+            $password = $this->logInform->getValue(LogInForm::PASSWORD);
+            $userFromDatabase = UserPeer::getUserFromDatabase($login, $password);
             $user = $this->getUser();
             $user->logIn($userFromDatabase);
             $url = ($user->isAdmin()) ? '@user_list' : '@user_profile';

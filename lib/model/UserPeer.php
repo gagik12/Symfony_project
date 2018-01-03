@@ -2,11 +2,11 @@
 
 class UserPeer extends BaseUserPeer
 {
-    public static function getUserFromDatabase(UserData $userData)
+    public static function getUserFromDatabase(string $login, string $password = null)
     {
         $criteria = new Criteria();
-        $criteria->add(UserPeer::LOGIN, $userData->getLogin());
-        $password = $userData->getPassword();
+        $criteria->add(UserPeer::LOGIN, $login);
+
         if ($password)
         {
             $criteria->add(UserPeer::PASSWORD, md5($password));
