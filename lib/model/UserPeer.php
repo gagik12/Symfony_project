@@ -39,10 +39,4 @@ class UserPeer extends BaseUserPeer
 
         UserPeer::doUpdate($criteria);
     }
-
-    //Обновление данных пользователя в БД на основе сессионного пользователя
-    /*public static function updateUser(User $user)
-    {
-        UserPeer::doUpdate($user);
-    }*/
 }

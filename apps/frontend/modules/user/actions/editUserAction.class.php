@@ -1,22 +1,30 @@
 <?php
 
-/** @property sfForm $editUserForm */
+/**
+ * @property sfForm $editUserForm
+ * @property string $currentFirstName
+ * @property string $currentLastName
+ */
 class editUserAction extends sfAction
 {
     private const PARAMETER = 'login';
 
+    /**
+     * @param sfWebRequest $request
+     * @return string
+     */
     public function execute($request)
     {
         $this->editUserForm = new EditUserForm();
-
+        
         if ($request->hasParameter(editUserAction::PARAMETER) && !$this->getUser()->isAdmin())
         {
             $this->redirect('@edit_my_profile');
         }
-        //если нет параметра login, то редактируем данные текущего пользователя
-        $login = $request->hasParameter(editUserAction::PARAMETER) ? $request->getParameter(editUserAction::PARAMETER) : $this->getUser()->getLogin();
 
-        $user = UserPeer::getUserFromDatabase($login);
+        $login = $request->getParameter(editUserAction::PARAMETER);
+        //если нет параметра login, то редактируем данные текущего пользователя
+        $user = $login ? $user = UserPeer::getUserFromDatabase($login) : $this->getUser()->getLoggedUser();
 
         $this->currentFirstName = $user->getFirstName();
         $this->currentLastName = $user->getLastName();
@@ -25,6 +33,7 @@ class editUserAction extends sfAction
         {
             $this->processForm($request, $user->getId());
         }
+        return sfView::SUCCESS;
     }
 
     private function processForm(sfWebRequest $request, int $userId)
@@ -36,7 +45,7 @@ class editUserAction extends sfAction
             $lastName = $this->editUserForm->getValue(EditUserForm::LAST_NAME);
 
             UserPeer::updateUser($userId, $firstName, $lastName);
-            //если обновили данные текущего пользователя в БД то обновляем данные в сессионном пользователе
+            //если обновили данные текущего пользователя в БД то обновляем данные в сессии
             if ($userId == $this->getUser()->getId())
             {
                 $this->getUser()->updateLoggedUser($firstName, $lastName);

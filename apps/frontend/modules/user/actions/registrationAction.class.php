@@ -1,7 +1,12 @@
 <?php
-/** @property sfForm $registrationForm */
+
+/** @property UserForm $registrationForm */
 class registrationAction extends sfAction
 {
+    /**
+     * @param sfWebRequest $request
+     * @return string
+     */
     public function execute($request)
     {
         if ($this->getUser()->isAuthenticated())
@@ -13,6 +18,7 @@ class registrationAction extends sfAction
         {
             $this->processForm($request);
         }
+        return sfView::SUCCESS;
     }
 
     protected function processForm(sfWebRequest $request)

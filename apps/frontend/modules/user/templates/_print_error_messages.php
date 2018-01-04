@@ -1,3 +1,4 @@
+<? /** @var sfForm $form */ ?>
 <ul class="error_list">
     <? $errors = $form->getErrorSchema()->getErrors() ?>
     <? if (count($errors) > 0) : ?>

@@ -4,7 +4,7 @@ class myUser extends sfBasicSecurityUser
 {
     private const LOGGED_USER = 'loggedUser';
 
-    public function logIn($userFromDatabase)
+    public function logIn(User $userFromDatabase)
     {
         $this->setAuthenticated(true);
         $this->setAttribute(myUser::LOGGED_USER, $userFromDatabase);

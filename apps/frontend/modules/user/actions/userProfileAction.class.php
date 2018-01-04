@@ -8,7 +8,8 @@ class userProfileAction extends sfAction
 {
     public function execute($request)
     {
-        $this->userFirstName = $this->getUser()->getLoggedUser()->getFirstName();
-        $this->userLastName = $this->getUser()->getLoggedUser()->getLastName();
+        $loggedUser = $this->getUser()->getLoggedUser();
+        $this->userFirstName = $loggedUser->getFirstName();
+        $this->userLastName = $loggedUser->getLastName();
     }
 }

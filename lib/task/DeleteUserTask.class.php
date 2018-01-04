@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: vadim
- * Date: 03.01.2018
- * Time: 22:42
- */
 
 class DeleteUserTask extends isoBaseTask
 {

@@ -3,6 +3,10 @@
 /** @property sfForm $logInform */
 class logInAction extends sfAction
 {
+    /**
+     * @param sfWebRequest $request
+     * @return string
+     */
     public function execute($request)
     {
         if ($this->getUser()->isAuthenticated())
@@ -14,6 +18,7 @@ class logInAction extends sfAction
         {
             $this->processForm($request);
         }
+        return sfView::SUCCESS;
     }
 
     protected function processForm(sfWebRequest $request)

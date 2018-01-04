@@ -1,3 +1,5 @@
+<? /** @var User[] $users */ ?>
+
 <?php foreach ($users as $user): ?>
     <div class="box-row">
         <div class="box"><a href="<?= url_for("@edit_user?login=" . $user->getLogin()) ?>"><?= $user->getLogin() ?></a></div>

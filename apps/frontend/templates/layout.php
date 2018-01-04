@@ -1,3 +1,4 @@
+<? /**@var $sf_content */ ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
     <? include_partial('global/head') ?>
