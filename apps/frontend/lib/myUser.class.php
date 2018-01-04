@@ -34,4 +34,21 @@ class myUser extends sfBasicSecurityUser
     {
         return $this->getLoggedUser()->getRole();
     }
+
+    public function getId(): int
+    {
+        return $this->getLoggedUser()->getId();
+    }
+
+    public function getLogin(): string
+    {
+        return $this->getLoggedUser()->getLogin();
+    }
+
+    public function updateLoggedUser(string $firstName, string $lastName)
+    {
+        $loggedUser = $this->getLoggedUser();
+        $loggedUser->setFirstName($firstName);
+        $loggedUser->setLastName($lastName);
+    }
 }

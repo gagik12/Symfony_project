@@ -14,7 +14,7 @@ class UserPeer extends BaseUserPeer
         return UserPeer::doSelectOne($criteria);
     }
 
-    public static function deleteUser($login): bool
+    public static function deleteUser(string $login): bool
     {
         $isDeleted = false;
 
@@ -28,4 +28,21 @@ class UserPeer extends BaseUserPeer
         }
         return $isDeleted;
     }
+
+    //Обновление данных пользователя в БД по ID
+    public static function updateUser(string $id, string $firstName, string $lastName)
+    {
+        $criteria = new Criteria();
+        $criteria->add(UserPeer::ID, $id);
+        $criteria->add(UserPeer::FIRST_NAME, $firstName);
+        $criteria->add(UserPeer::LAST_NAME, $lastName);
+
+        UserPeer::doUpdate($criteria);
+    }
+
+    //Обновление данных пользователя в БД на основе сессионного пользователя
+    /*public static function updateUser(User $user)
+    {
+        UserPeer::doUpdate($user);
+    }*/
 }

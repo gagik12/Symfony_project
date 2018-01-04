@@ -14,8 +14,12 @@ log_out:
     url:   /user/log_out
     param: { module: user, action: logOut }
 
-edit:
+edit_my_profile:
     url:   /user/edit
+    param: { module: user, action: editUser }
+
+edit_user:
+    url:   /user/edit/:login
     param: { module: user, action: editUser }
 
 registration:
