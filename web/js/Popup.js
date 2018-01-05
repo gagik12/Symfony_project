@@ -2,17 +2,12 @@ function Popup()
 {
     const BOX_WIDTH = 400;
 
-    this.popupLink = $('.popup-link');
     this.popupBox = $('.popup-box');
     this.cover = $('.cover');
 
-
     this.setEvents = function() {
         var self = this;
-        this.popupLink.click(function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-
+        $(document).on('click', '.popup-link', function(){
             self.openBox();
         });
         //при нажатии на box, popup не закрывается
@@ -49,5 +44,6 @@ function Popup()
         var boxPositionY = scrollPosition + OFFSET_TOP;
 
         this.popupBox.css({'width': BOX_WIDTH + 'px', 'left': boxPositionX + 'px', 'top': boxPositionY + 'px'});
+        this.cover.css({'top': scrollPosition + 'px'});
     };
 }

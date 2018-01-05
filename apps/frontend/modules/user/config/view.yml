@@ -12,4 +12,10 @@ userListSuccess:
   javascripts: [UserListLoader.js, Popup.js, main.js]
 
 editUserSuccess:
+  metas:
+    title: Редактирование пользователя
   javascripts: [UserListLoader.js, Popup.js, main.js]
+
+userProfileSuccess:
+  metas:
+    title: Профиль

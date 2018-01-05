@@ -209,11 +209,13 @@ table
     background-color: #000000;
 }
 
-.delete
+.deleteIcon
 {
+    width: 25px;
+    height: 25px;
     background-image: url(../img/DeleteRed.png);
     background-size: 25px 25px;
-    display: none;
+    display: block;
 }
 
 .delete-block-size

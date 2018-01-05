@@ -3,9 +3,17 @@ function UserListLoader()
     this.page = 1;
     this.loading = $("#loading");
 
+    this.setEvent = function() {
+        var self = this;
+        $("#submit").click(function() {
+            self.load();
+        });
+    };
+
     this.load = function() {
         //если данные еще не загружены, то не имеем право запрашивать новые данные
-        if (!this.loading.is(":visible")) {
+        if (!this.loading.is(":visible"))
+        {
             this.loading.show();
             var ajaxSettings = {
                 context: this,
@@ -21,7 +29,8 @@ function UserListLoader()
     }
 
     this.successCallback = function(response) {
-        if (response != 0) {
+        if (response != 0)
+        {
             $('.boxer').append(response);
             ++this.page;
         }

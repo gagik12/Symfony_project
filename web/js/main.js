@@ -1,23 +1,19 @@
-window.onload = function() {
+$(window).ready(function() {
     var userListLoader = new UserListLoader();
+    userListLoader.setEvent();
 
     var popup = new Popup();
     popup.setEvents();
 
-    $("#submit").click(function() {
-        userListLoader.load();
-    });
+    displayDeleteIcon();
+});
 
-    $('#box_hover').hover(function(e) {
-        var del = $(".delete");
-
-        if (!del.is(":visible"))
-        {
-            del.show();
-        }
-        else
-        {
-            del.hide();
-        }
+function displayDeleteIcon()
+{
+    $(document).on('mouseover', '.box-row', function(){
+        $(this).find(".deleteIcon").show();
     });
+    $(document).on('mouseout', '.box-row', function(){
+        $(this).find(".deleteIcon").hide();
+    })
 }
