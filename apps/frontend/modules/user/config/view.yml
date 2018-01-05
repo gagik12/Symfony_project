@@ -9,7 +9,7 @@ registrationSuccess:
 userListSuccess:
   metas:
     title: Список пользователей
-  javascripts: [UserListLoader.js, main.js]
+  javascripts: [UserListLoader.js, Popup.js, main.js]
 
 editUserSuccess:
   javascripts: [UserListLoader.js, Popup.js, main.js]
