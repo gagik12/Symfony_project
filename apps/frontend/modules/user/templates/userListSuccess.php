@@ -13,3 +13,4 @@
     <input type="submit" id="submit" value="Дальше">
     <img src="../img/loading.gif" id="loading" alt="загрузка" style="display: none;">
 </div>
+

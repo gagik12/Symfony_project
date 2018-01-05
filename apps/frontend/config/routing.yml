@@ -22,6 +22,10 @@ edit_user:
     url:   /user/edit/:login
     param: { module: user, action: editUser }
 
+delete_user:
+    url:   /user/delete/:login
+    param: { module: user, action: deleteUser }
+
 registration:
     url:   /user/registration
     param: { module: user, action: registration }

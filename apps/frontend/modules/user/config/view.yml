@@ -10,3 +10,6 @@ userListSuccess:
   metas:
     title: Список пользователей
   javascripts: [UserListLoader.js, main.js]
+
+editUserSuccess:
+  javascripts: [UserListLoader.js, Popup.js, main.js]

@@ -2,7 +2,7 @@ userList:
   is_secure: true
   credentials: [admin]
 
-login:
+logIn:
   is_secure: false
 
 profile:
@@ -11,4 +11,8 @@ profile:
 
 registration:
   is_secure: false
+
+deleteUser:
+  is_secure: true
+  credentials: [admin]
 

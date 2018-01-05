@@ -4,6 +4,7 @@
  * @property sfForm $editUserForm
  * @property string $currentFirstName
  * @property string $currentLastName
+ * @property string $login
  */
 class editUserAction extends sfAction
 {
@@ -16,15 +17,15 @@ class editUserAction extends sfAction
     public function execute($request)
     {
         $this->editUserForm = new EditUserForm();
-        
+
         if ($request->hasParameter(editUserAction::PARAMETER) && !$this->getUser()->isAdmin())
         {
             $this->redirect('@edit_my_profile');
         }
 
-        $login = $request->getParameter(editUserAction::PARAMETER);
+        $this->login = $request->getParameter(editUserAction::PARAMETER);
         //если нет параметра login, то редактируем данные текущего пользователя
-        $user = $login ? $user = UserPeer::getUserFromDatabase($login) : $this->getUser()->getLoggedUser();
+        $user = $this->login ? $user = UserPeer::getUserFromDatabase($this->login) : $this->getUser()->getLoggedUser();
 
         $this->currentFirstName = $user->getFirstName();
         $this->currentLastName = $user->getLastName();
