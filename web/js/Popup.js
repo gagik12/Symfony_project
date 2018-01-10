@@ -1,8 +1,8 @@
-function Popup()
+function PopUp()
 {
     const BOX_WIDTH = 400;
 
-    this.popupBox = $('.popup-box');
+    this.popUpBox = $('.popup-box');
     this.cover = $('.cover');
 
     this.setEvents = function() {
@@ -10,8 +10,8 @@ function Popup()
         $(document).on('click', '.popup-link', function(){
             self.openBox();
         });
-        //при нажатии на box, popup не закрывается
-        this.popupBox.click(function(e) {
+        //при нажатии на box, pop up не закрывается
+        this.popUpBox.click(function(e) {
             e.stopPropagation();
         });
 
@@ -23,16 +23,16 @@ function Popup()
     this.openBox = function() {
         this.setCenterBox();
 
-        this.popupBox.show();
+        this.popUpBox.show();
         this.cover.fadeTo("slow", 0.85);
-        //this.cover.show();
+
         $('html, body').css('overflow', 'hidden');
     };
 
     this.closeBox = function() {
-        this.popupBox.hide();
+        this.popUpBox.hide();
         this.cover.fadeOut("slow");
-        //this.cover.hide();
+
         $("html, body").css("overflow", "auto");
     };
 
@@ -45,7 +45,7 @@ function Popup()
         var boxPositionX = (documentWidth - BOX_WIDTH) / 2;
         var boxPositionY = scrollPosition + OFFSET_TOP;
 
-        this.popupBox.css({'width': BOX_WIDTH + 'px', 'left': boxPositionX + 'px', 'top': boxPositionY + 'px'});
+        this.popUpBox.css({'width': BOX_WIDTH + 'px', 'left': boxPositionX + 'px', 'top': boxPositionY + 'px'});
         this.cover.css({'top': scrollPosition + 'px'});
     };
 }
