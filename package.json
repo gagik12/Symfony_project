@@ -1,0 +1,18 @@
+{
+  "name": "Symfony_project",
+  "version": "0.0.1",
+  "description": "",
+  "author": "Vadim",
+  "devDependencies": {
+    "@types/jquery": "^3.2.17",
+    "grunt": "^0.4.5",
+    "grunt-contrib-copy": "^1.0.0",
+    "grunt-contrib-watch": "^1.0.0",
+    "grunt-ts": "^6.0.0-beta.15",
+    "systemjs": "^0.19.47",
+    "typescript": "^2.2.1"
+  },
+  "scripts": {
+    "start": "grunt"
+  }
+}

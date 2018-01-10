@@ -8,4 +8,5 @@
     ?>
     <link rel="shortcut icon" href="/favicon.ico" />
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <script>System.import('main');</script>
 </head>

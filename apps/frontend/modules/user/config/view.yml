@@ -9,12 +9,12 @@ registrationSuccess:
 userListSuccess:
   metas:
     title: Список пользователей
-  javascripts: [IconBar.js, UserListLoader.js, PopUp.js, main.js]
+  javascripts: [vendor/systemJs/system.js, script.js]
 
 editUserSuccess:
   metas:
     title: Редактирование пользователя
-  javascripts: [IconBar.js, UserListLoader.js, PopUp.js, main.js]
+  javascripts: [vendor/systemJs/system.js, script.js]
 
 userProfileSuccess:
   metas:

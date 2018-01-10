@@ -4,4 +4,8 @@
 /cache
 /vendor
 /log
+
 /.idea
+/.tscache
+
+/node_modules
