@@ -5,7 +5,9 @@ $(window).ready(function() {
     var popup = new Popup();
     popup.setEvents();
 
-    displayDeleteIcon();
+    var iconBar = new IconBar();
+    iconBar.setEvents();
+    //displayDeleteIcon();
 });
 
 function displayDeleteIcon()

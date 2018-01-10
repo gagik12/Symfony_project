@@ -24,13 +24,15 @@ function Popup()
         this.setCenterBox();
 
         this.popupBox.show();
-        this.cover.show();
+        this.cover.fadeTo("slow", 0.85);
+        //this.cover.show();
         $('html, body').css('overflow', 'hidden');
     };
 
     this.closeBox = function() {
         this.popupBox.hide();
-        this.cover.hide();
+        this.cover.fadeOut("slow");
+        //this.cover.hide();
         $("html, body").css("overflow", "auto");
     };
 

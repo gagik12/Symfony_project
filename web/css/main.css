@@ -216,9 +216,10 @@ table
     background-image: url(../img/DeleteRed.png);
     background-size: 25px 25px;
     display: block;
+    cursor: pointer;
 }
 
-.delete-block-size
+.icon-bar-size
 {
     width: 25px;
     height: 25px;
@@ -292,7 +293,7 @@ table
 
 .cover
 {
-    background: rgba(0, 0, 0, 0.3);
+    background-color: #000;
     position: absolute;
     top: 0;
     overflow: hidden;
