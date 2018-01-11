@@ -213,7 +213,7 @@ table
 {
     width: 25px;
     height: 25px;
-    background-image: url(../img/DeleteRed.png);
+    background-image: url(../img/delete_red.png);
     background-size: 25px 25px;
     display: block;
     cursor: pointer;
@@ -253,8 +253,8 @@ table
 .popup-box .close-x
 {
     position: absolute;
-    top: 0px;
-    right: 0px;
+    top: 0;
+    right: 0;
     font-family: Arial, Helvetica, sans-serif;
     font-weight: bold;
     cursor: pointer;
