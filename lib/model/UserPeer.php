@@ -9,7 +9,7 @@ class UserPeer extends BaseUserPeer
 
         if ($password)
         {
-            $criteria->add(UserPeer::PASSWORD, md5($password));
+            $criteria->add(UserPeer::PASSWORD, PasswordEncoder::getEncodedPassword($password));
         }
         return UserPeer::doSelectOne($criteria);
     }

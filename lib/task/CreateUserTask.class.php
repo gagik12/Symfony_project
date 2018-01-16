@@ -6,8 +6,9 @@ class CreateUserTask extends isoBaseTask
     private const TASK_NAME = 'create';
     private const LOGIN_ARGUMENT = 'login';
     private const PASSWORD_ARGUMENT = 'password';
-    private const CONNECTION_OPTION = "connection";
-    private const ROLE_OPTION = "role";
+    private const CONNECTION_OPTION = 'connection';
+    private const ROLE_OPTION = 'role';
+    private const DEFAULT_ROLE = 'user';
 
     public function configure()
     {
@@ -17,7 +18,7 @@ class CreateUserTask extends isoBaseTask
         $this->addArgument(CreateUserTask::PASSWORD_ARGUMENT, sfCommandArgument::REQUIRED);
         $this->addOptions([
             new sfCommandOption(CreateUserTask::CONNECTION_OPTION, null, sfCommandOption::PARAMETER_REQUIRED, 'The connection name', 'propel'),
-            new sfCommandOption(CreateUserTask::ROLE_OPTION, null, sfCommandOption::PARAMETER_REQUIRED, 'Role'),
+            new sfCommandOption(CreateUserTask::ROLE_OPTION, null, sfCommandOption::PARAMETER_REQUIRED, 'Role', CreateUserTask::DEFAULT_ROLE),
         ]);
     }
 
@@ -35,8 +36,7 @@ class CreateUserTask extends isoBaseTask
 
         if ($this->checkForm($form))
         {
-            $form->populateUser();
-            $user = $form->getUser();
+            $user = $form->populateUser();
             $user->save();
             $this->log("User has been created.");
         }

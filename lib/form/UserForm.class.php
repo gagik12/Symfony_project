@@ -4,21 +4,18 @@ class UserForm extends BaseUserForm
 {
     private const DEFAULT_ROLE = UserRole::USER;
 
-    private $user;
-
     public function populateUser()
     {
-        $this->user = new User();
-        $this->user->setLogin($this->getValue(UserForm::LOGIN));
-        $this->user->setPassword($this->getValue(UserForm::PASSWORD));
-        $this->user->setFirstName($this->getValue(UserForm::FIRST_NAME));
-        $this->user->setLastName($this->getValue(UserForm::LAST_NAME));
-        $role = $this->getValue(UserForm::ROLE);
-        $this->user->setRole(($role) ? $role : UserForm::DEFAULT_ROLE);
-    }
+        $userRole = $this->getValue(UserForm::ROLE);
+        $userPassword = PasswordEncoder::getEncodedPassword($this->getValue(UserForm::PASSWORD));
 
-    public function getUser(): User
-    {
-        return $this->user;
+        $user = new User();
+        $user->setLogin($this->getValue(UserForm::LOGIN));
+        $user->setPassword($userPassword);
+        $user->setFirstName($this->getValue(UserForm::FIRST_NAME));
+        $user->setLastName($this->getValue(UserForm::LAST_NAME));
+        $user->setRole(($userRole) ? $userRole : UserForm::DEFAULT_ROLE);
+
+        return $user;
     }
 }
