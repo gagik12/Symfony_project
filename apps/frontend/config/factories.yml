@@ -1,15 +1,3 @@
-prod:
-  logger:
-    class: sfAggregateLogger
-    param:
-      level: DEBUG
-      loggers:
-        sf_file_debug:
-          class: Logger
-          param:
-            level: DEBUG
-            file: %SF_LOG_DIR%/%SF_APP%.log
-
 test:
   storage:
     class: sfSessionTestStorage
