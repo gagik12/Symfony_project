@@ -8,7 +8,6 @@ class CreateUserTask extends isoBaseTask
     private const PASSWORD_ARGUMENT = 'password';
     private const CONNECTION_OPTION = 'connection';
     private const ROLE_OPTION = 'role';
-    private const DEFAULT_ROLE = 'user';
 
     public function configure()
     {
@@ -18,7 +17,7 @@ class CreateUserTask extends isoBaseTask
         $this->addArgument(CreateUserTask::PASSWORD_ARGUMENT, sfCommandArgument::REQUIRED);
         $this->addOptions([
             new sfCommandOption(CreateUserTask::CONNECTION_OPTION, null, sfCommandOption::PARAMETER_REQUIRED, 'The connection name', 'propel'),
-            new sfCommandOption(CreateUserTask::ROLE_OPTION, null, sfCommandOption::PARAMETER_REQUIRED, 'Role', CreateUserTask::DEFAULT_ROLE),
+            new sfCommandOption(CreateUserTask::ROLE_OPTION, null, sfCommandOption::PARAMETER_REQUIRED, 'Role'),
         ]);
     }
 
