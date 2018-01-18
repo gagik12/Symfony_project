@@ -3,6 +3,7 @@
  * @var sfForm $editUserForm
  * @var string $currentFirstName
  * @var string $currentLastName
+ * @var boolean $isDeleteButtonVisible
  */
 ?>
 <h1>Редактирование профиля: <?= $login ?></h1>
@@ -15,9 +16,11 @@
         <input type="submit" />
     </div>
 </form>
-<div class="delete-button">
-    <a class="popup-link">Удалить</a>
-</div>
+<? if ($isDeleteButtonVisible): ?>
+    <div class="delete-button">
+        <a class="popup-link">Удалить</a>
+    </div>
+<? endif ?>
 <? include_partial('print_error_messages', ['form' => $editUserForm]) ?>
 <? include_partial('pop_up', ['login' => $login]) ?>
 

@@ -5,6 +5,7 @@
  * @property string $currentFirstName
  * @property string $currentLastName
  * @property string $login
+ * @property boolean $isDeleteButtonVisible
  */
 class editUserAction extends sfAction
 {
@@ -29,6 +30,7 @@ class editUserAction extends sfAction
 
         $this->currentFirstName = $user->getFirstName();
         $this->currentLastName = $user->getLastName();
+        $this->isDeleteButtonVisible = $this->getUser()->getLogin() != $user->getLogin();
 
         if ($request->isMethod(sfRequest::POST))
         {
