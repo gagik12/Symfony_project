@@ -2,9 +2,8 @@
 
 /**
  * @property sfForm $editUserForm
- * @property string $currentFirstName
- * @property string $currentLastName
- * @property string $login
+ * @property User $user
+ * @property boolean $isDeleteButtonVisible
  */
 class editUserAction extends sfAction
 {
@@ -23,16 +22,14 @@ class editUserAction extends sfAction
             $this->redirect('@edit_my_profile');
         }
 
-        $this->login = $request->getParameter(editUserAction::PARAMETER);
-        //если нет параметра login, то редактируем данные текущего пользователя
-        $user = $this->login ? $user = UserPeer::getUserFromDatabase($this->login) : $this->getUser()->getLoggedUser();
+        $loginParameter = $request->getParameter(editUserAction::PARAMETER);
 
-        $this->currentFirstName = $user->getFirstName();
-        $this->currentLastName = $user->getLastName();
+        $this->user = $loginParameter ? $user = UserPeer::getUserFromDatabase($loginParameter) : $this->getUser()->getLoggedUser();
+        $this->isDeleteButtonVisible = $this->getUser()->getLogin() != $user->getLogin();
 
         if ($request->isMethod(sfRequest::POST))
         {
-            $this->processForm($request, $user->getId());
+            $this->processForm($request, $this->user->getId());
         }
         return sfView::SUCCESS;
     }
@@ -46,7 +43,7 @@ class editUserAction extends sfAction
             $lastName = $this->editUserForm->getValue(EditUserForm::LAST_NAME);
 
             UserPeer::updateUser($userId, $firstName, $lastName);
-            //если обновили данные текущего пользователя в БД то обновляем данные в сессии
+
             if ($userId == $this->getUser()->getId())
             {
                 $this->getUser()->updateLoggedUser($firstName, $lastName);

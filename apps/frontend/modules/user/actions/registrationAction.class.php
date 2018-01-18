@@ -27,8 +27,7 @@ class registrationAction extends sfAction
         $this->registrationForm->bind($userParameter);
         if ($this->registrationForm->isValid())
         {
-            $this->registrationForm->populateUser();
-            $user = $this->registrationForm->getUser();
+            $user = $this->registrationForm->populateUser();
             $user->save();
             $this->redirect('@log_in');
         }

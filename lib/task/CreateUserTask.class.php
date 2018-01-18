@@ -6,8 +6,8 @@ class CreateUserTask extends isoBaseTask
     private const TASK_NAME = 'create';
     private const LOGIN_ARGUMENT = 'login';
     private const PASSWORD_ARGUMENT = 'password';
-    private const CONNECTION_OPTION = "connection";
-    private const ROLE_OPTION = "role";
+    private const CONNECTION_OPTION = 'connection';
+    private const ROLE_OPTION = 'role';
 
     public function configure()
     {
@@ -35,8 +35,7 @@ class CreateUserTask extends isoBaseTask
 
         if ($this->checkForm($form))
         {
-            $form->populateUser();
-            $user = $form->getUser();
+            $user = $form->populateUser();
             $user->save();
             $this->log("User has been created.");
         }
