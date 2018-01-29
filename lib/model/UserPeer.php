@@ -16,20 +16,16 @@ class UserPeer extends BaseUserPeer
 
     public static function deleteUser(string $login): bool
     {
-        $isDeleted = false;
-
-        $criteria = new Criteria();
-        $criteria->add(self::LOGIN, $login);
-
-        if (UserPeer::exists($criteria))
+        $isUserDeleted = false;
+        $user = UserPeer::getUserFromDatabase($login);
+        if ($user)
         {
-            UserPeer::doDelete($criteria);
-            $isDeleted = true;
+            $user->delete();
+            $isUserDeleted = true;
         }
-        return $isDeleted;
+        return $isUserDeleted;
     }
 
-    //Обновление данных пользователя в БД по ID
     public static function updateUser(string $id, string $firstName, string $lastName)
     {
         $criteria = new Criteria();
